@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:weightSum="100"
+    android:layoutDirection="rtl">
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="4"
+        android:layout_marginRight="7dp"
+        android:src="@drawable/ringgreenw"/>
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="45"
+        android:maxLines="1"
+        android:paddingRight="10dp"
+        android:text="نص فرخة + رز + بيبسي"
+        android:gravity="center_vertical"
+        android:textColor="@color/colorb"
+        android:fontFamily="@font/thesansbold"/>
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="12"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="وسط"
+        android:maxLines="1"
+        android:textColor="@color/colorb"
+        android:fontFamily="@font/thesansbold"/>
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:text="2"
+        android:gravity="center_horizontal|center_vertical"
+        android:layout_weight="12"
+        android:maxLines="1"
+        android:textColor="@color/colorb"
+        android:fontFamily="@font/thesansbold"/>
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:text="500"
+        android:gravity="center_horizontal|center_vertical"
+        android:fontFamily="@font/thesansbold"
+        android:textColor="@color/colorb"
+        android:maxLines="1"
+        android:layout_weight="13"/>
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="14"
+        android:scaleX="0.4"
+        android:scaleY="0.4"
+        android:src="@drawable/delete"
+        android:tint="@color/colorOrange"/>
+
+
+</LinearLayout>

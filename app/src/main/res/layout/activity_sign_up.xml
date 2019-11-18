@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/itembranch"
+    android:gravity="center_horizontal"
+    tools:context=".Scenarios.ScenarioTwo.Controller.Sign_Up">
+
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="140dp"
+        android:src="@drawable/rostologo"
+        android:layout_marginTop="7dp"/>
+
+
+
+    <EditText
+        android:id="@+id/editName"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_35sdp"
+        android:layout_marginTop="@dimen/_34sdp"
+        android:layout_marginRight="@dimen/_34sdp"
+        android:layout_marginLeft="@dimen/_34sdp"
+        android:textDirection="rtl"
+        android:hint="الاسم"
+        android:textColorHint="@color/colorw"
+        android:textColor="@color/colorw"
+        android:paddingRight="@dimen/_7sdp"
+        android:textAlignment="textStart"
+        android:fontFamily="@font/segoeui"
+        android:backgroundTint="@color/colorw"
+        android:textSize="@dimen/_14sdp"/>
+
+    <EditText
+        android:id="@+id/editPhone"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_35sdp"
+        android:textDirection="rtl"
+        android:layout_marginTop="@dimen/_25sdp"
+        android:layout_marginRight="@dimen/_34sdp"
+        android:layout_marginLeft="@dimen/_34sdp"
+        android:hint="رقم الهاتف"
+        android:textColorHint="@color/colorw"
+        android:textColor="@color/colorw"
+        android:fontFamily="@font/segoeui"
+        android:paddingRight="@dimen/_7sdp"
+        android:textAlignment="textStart"
+        android:backgroundTint="@color/colorw"
+        android:textSize="@dimen/_14sdp"/>
+
+    <EditText
+        android:id="@+id/edit_Email"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_35sdp"
+        android:textDirection="rtl"
+        android:layout_marginTop="@dimen/_25sdp"
+        android:layout_marginRight="@dimen/_34sdp"
+        android:layout_marginLeft="@dimen/_34sdp"
+        android:hint="البريد الالكتروني"
+        android:textColorHint="@color/colorw"
+        android:textColor="@color/colorw"
+        android:paddingRight="@dimen/_7sdp"
+        android:fontFamily="@font/segoeui"
+        android:textAlignment="textStart"
+        android:backgroundTint="@color/colorw"
+        android:textSize="@dimen/_14sdp"/>
+
+    <EditText
+        android:id="@+id/edit_pass"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_35sdp"
+        android:layout_marginTop="@dimen/_25sdp"
+        android:textDirection="rtl"
+        android:layout_marginRight="@dimen/_34sdp"
+        android:layout_marginLeft="@dimen/_34sdp"
+        android:hint="كلمة المرور"
+        android:textAlignment="textStart"
+        android:textColorHint="@color/colorw"
+        android:textColor="@color/colorw"
+        android:paddingRight="@dimen/_7sdp"
+        android:fontFamily="@font/segoeui"
+        android:backgroundTint="@color/colorw"
+        android:textSize="@dimen/_14sdp"/>
+
+    <Button
+        android:id="@+id/btn_SignUp"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_33sdp"
+        android:text="تسجيل الدخول"
+        android:textColor="@color/colorb"
+        android:textSize="17dp"
+        android:fontFamily="@font/thesansbold"
+        android:background="@drawable/btnbg"
+        android:backgroundTint="@color/colorw"
+        android:layout_marginRight="@dimen/_34sdp"
+        android:layout_marginLeft="@dimen/_34sdp"
+        android:layout_marginTop="@dimen/_17sdp"/>
+
+
+
+
+
+</LinearLayout>

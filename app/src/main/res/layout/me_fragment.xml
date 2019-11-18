@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/_14sdp"
+        android:paddingLeft="@dimen/_10sdp"
+        android:paddingRight="@dimen/_10sdp">
+
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_35sdp"
+            android:text="الاعدادات"
+            android:gravity="center"
+            android:fontFamily="@font/thesansbold"
+            android:textSize="@dimen/_15sdp"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:backgroundTint="@color/colorLighterGray"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_35sdp"
+            android:text="الحساب الشخصي"
+            android:textColor="@color/colorb"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:background="@color/colorLighterGray"
+            android:gravity="center_vertical"
+            android:paddingRight="@dimen/_10sdp"
+            android:fontFamily="@font/thesansbold"/>
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_30sdp"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:weightSum="1"
+            android:layout_marginTop="@dimen/_5sdp">
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_15sdp"
+                android:layout_weight="0.1"
+                android:src="@drawable/nextone"/>
+
+            <TextView
+                android:id="@+id/txt_EditProfile"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.9"
+                android:text="البيانات الشخصية "
+                android:gravity="center_vertical"
+                android:fontFamily="@font/thesansbold"
+                android:textSize="@dimen/_10sdp"
+                android:paddingRight="@dimen/_10sdp"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:backgroundTint="@color/colorLighterGray"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_30sdp"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:weightSum="1"
+            android:layout_marginTop="@dimen/_5sdp">
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_15sdp"
+                android:layout_weight="0.1"
+                android:src="@drawable/nextone"/>
+
+            <TextView
+                android:id="@+id/txt_EditPass"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.9"
+                android:text="تغيير الرقم السري"
+                android:gravity="center_vertical"
+                android:fontFamily="@font/thesansbold"
+                android:textSize="@dimen/_10sdp"
+                android:paddingRight="@dimen/_10sdp"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:backgroundTint="@color/colorLighterGray"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_35sdp"
+            android:text="اعدادات"
+            android:textColor="@color/colorb"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@color/colorLighterGray"
+            android:gravity="center_vertical"
+            android:paddingRight="@dimen/_10sdp"
+            android:fontFamily="@font/thesansbold"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_30sdp"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:weightSum="1"
+            android:layout_marginTop="@dimen/_5sdp">
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_15sdp"
+                android:layout_weight="0.1"
+                android:src="@drawable/nextone"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.9"
+                android:text="من نحن "
+                android:gravity="center_vertical"
+                android:fontFamily="@font/thesansbold"
+                android:textSize="@dimen/_10sdp"
+                android:paddingRight="@dimen/_10sdp"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:backgroundTint="@color/colorLighterGray"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_30sdp"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:weightSum="1"
+            android:layout_marginTop="@dimen/_5sdp">
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_15sdp"
+                android:layout_weight="0.1"
+                android:src="@drawable/nextone"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.9"
+                android:text="اسئلة شائعة"
+                android:gravity="center_vertical"
+                android:fontFamily="@font/thesansbold"
+                android:textSize="@dimen/_10sdp"
+                android:paddingRight="@dimen/_10sdp"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:backgroundTint="@color/colorLighterGray"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_30sdp"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:weightSum="1"
+            android:layout_marginTop="@dimen/_5sdp">
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_15sdp"
+                android:layout_weight="0.1"
+                android:src="@drawable/nextone"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.9"
+                android:text="اتصل بنا "
+                android:gravity="center_vertical"
+                android:fontFamily="@font/thesansbold"
+                android:textSize="@dimen/_10sdp"
+                android:paddingRight="@dimen/_10sdp"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:backgroundTint="@color/colorLighterGray"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_30sdp"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:weightSum="1"
+            android:layout_marginTop="@dimen/_5sdp">
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_15sdp"
+                android:layout_weight="0.1"
+                android:src="@drawable/nextone"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.9"
+                android:text="سياسات الخصوصية"
+                android:gravity="center_vertical"
+                android:fontFamily="@font/thesansbold"
+                android:textSize="@dimen/_10sdp"
+                android:paddingRight="@dimen/_10sdp"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:backgroundTint="@color/colorLighterGray"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_35sdp"
+            android:text="تسجيل الخروج"
+            android:textColor="@color/colorb"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:background="@color/colorLighterGray"
+            android:gravity="center_horizontal|center"
+            android:paddingRight="@dimen/_10sdp"
+            android:fontFamily="@font/thesansbold"/>
+
+
+    </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</RelativeLayout>
