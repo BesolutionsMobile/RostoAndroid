@@ -11,9 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -24,9 +22,8 @@ import com.besolutions.rosto.NetworkLayar.Apicalls;
 import com.besolutions.rosto.NetworkLayar.NetworkInterface;
 import com.besolutions.rosto.NetworkLayar.ResponseModel;
 import com.besolutions.rosto.R;
-import com.besolutions.rosto.Scenarios.ScenarioOne.Controller.MainActivity;
-
-import org.json.JSONException;
+import com.besolutions.rosto.Scenarios.ScenarioTwo.Model.UserFinalResponse;
+import com.google.gson.Gson;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -51,14 +48,14 @@ public class SignIn extends AppCompatActivity  implements NetworkInterface {
             @Override
             public void onClick(View v) {
 
-                //requests();
+
                 new Apicalls(SignIn.this,SignIn.this).loginUser(editmail.getText().toString(),editpass.getText().toString());
                 pd.show();
             }
         });
 
         pd = new ProgressDialog(SignIn.this);
-        pd.setMessage("Loading...");
+
 
         txtRegist.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,18 +66,26 @@ public class SignIn extends AppCompatActivity  implements NetworkInterface {
             }
         });
 
+        //requests();
 
     }
 
     @Override
     public void OnStart() {
 
+        pd.setMessage("Loading...");
     }
 
     @Override
     public void OnResponse(ResponseModel model) {
 
-        Toast.makeText(this, ""+model.getJsonObject(), Toast.LENGTH_SHORT).show();
+        Gson gson = new Gson();
+
+        //Toast.makeText(this, model.getResponse(), Toast.LENGTH_SHORT).show();
+
+        UserFinalResponse user = gson.fromJson(model.getResponse(), UserFinalResponse.class);
+
+        Toast.makeText(this, user.getUserData().getName(), Toast.LENGTH_SHORT).show();
 
         pd.cancel();
 
@@ -89,7 +94,7 @@ public class SignIn extends AppCompatActivity  implements NetworkInterface {
     @Override
     public void OnError(VolleyError error) {
 
-        Toast.makeText(this, ""+error.toString(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "error "+error.networkResponse.statusCode, Toast.LENGTH_SHORT).show();
         pd.cancel();
 
 
@@ -102,12 +107,12 @@ public class SignIn extends AppCompatActivity  implements NetworkInterface {
         StringRequest requests = new StringRequest(Request.Method.POST, "https://webdesign.be4em.info/rosto_api_ar/user/login/549834453/25598", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                if (!response.equals(null)) {
+                if (response != null) {
                     Log.e("Your Array Response", response);
                 } else {
                     Log.e("Your Array Response", "Data Null");
                 }
-                Toast.makeText(getApplicationContext(), "Response:  " + response.toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Response:  " + response, Toast.LENGTH_SHORT).show();
                 pd.cancel();
 
             }
