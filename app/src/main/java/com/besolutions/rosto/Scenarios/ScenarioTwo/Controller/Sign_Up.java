@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.icu.text.MessagePattern;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -43,31 +44,40 @@ public class Sign_Up extends AppCompatActivity implements NetworkInterface {
             public void onClick(View v) {
 
 
-                new Apicalls(Sign_Up.this,Sign_Up.this).registerUser(editname.getText().toString(),editemail.getText().toString(),editpass.getText().toString(),editphone.getText().toString());
+                new Apicalls(Sign_Up.this,Sign_Up.this).registerUser(editname.getText().toString(),editemail.getText().toString(),editphone.getText().toString(),editpass.getText().toString());
 
                 pg.show();
 
             }
         });
 
-        pg = new ProgressDialog(Sign_Up.this);
-        pg.setMessage("Loading...");
+
     }
 
     @Override
     public void OnStart() {
 
+        pg = new ProgressDialog(Sign_Up.this);
+        pg.setMessage("Loading...");
     }
 
     @Override
     public void OnResponse(ResponseModel model) {
 
+        pg.cancel();
         Gson gson = new Gson();
 
-        Model_SignUp model_signUp = gson.fromJson(model.getResponse(),Model_SignUp.class);
+        Model_SignUp signUp = gson.fromJson(model.getResponse(), Model_SignUp.class);
 
-        Toast.makeText(this, ""+model_signUp.getStatus(), Toast.LENGTH_SHORT).show();
-
+        if (signUp.getStatus() == 1)
+        {
+            Toast.makeText(this, ""+signUp.getMessage(), Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(Sign_Up.this, MainActivity.class));
+        }else if (signUp.getStatus() == 2)
+        {
+            Toast.makeText(this, ""+signUp.getMessage(), Toast.LENGTH_SHORT).show();
+        }else
+            Toast.makeText(this, ""+signUp.getMessage(), Toast.LENGTH_SHORT).show();
     }
 
     @Override

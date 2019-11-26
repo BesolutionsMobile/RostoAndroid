@@ -39,7 +39,7 @@
         android:textSize="@dimen/_14sdp"/>
 
     <EditText
-        android:id="@+id/editPhone"
+        android:id="@+id/edit_Email"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_35sdp"
         android:textDirection="rtl"
@@ -47,7 +47,7 @@
         android:layout_marginRight="@dimen/_34sdp"
         android:layout_marginLeft="@dimen/_34sdp"
         android:hint="رقم الهاتف"
-        android:inputType="phone"
+        android:inputType="text"
         android:singleLine="true"
         android:imeOptions="actionDone"
         android:textColorHint="@color/colorw"
@@ -59,7 +59,8 @@
         android:textSize="@dimen/_14sdp"/>
 
     <EditText
-        android:id="@+id/edit_Email"
+        android:id="@+id/editPhone"
+
         android:layout_width="match_parent"
         android:layout_height="@dimen/_35sdp"
         android:textDirection="rtl"

@@ -50,12 +50,9 @@ public class Apicalls
     public void registerUser(final String Name, final String Email, final String Password, final String Phone)
     {
 
-        try {
-            apiRouter.makeAdvancedRequest(Apiclient.Register_Uer.getURL(), Request.Method.POST, Apiclient.Register_Uer.getParams(), Arrays.asList(Name,Email,Password,Phone), null);
-        } catch (
-                JSONException e) {
-            e.printStackTrace();
-        }
+        apiRouter.performRequest(Apiclient.Register_Uer.getURL(),Apiclient.Register_Uer.getParams(), Arrays.asList(Email,Password,Phone, Name),Request.Method.POST,Apiclient.Register_Uer.getCode());
+
+
     }
 
     //----------------------------------------------------------------------------------------------
