@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Scenarios.SenarioFive.Controller.Branches_Details">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+        <include layout="@layout/header_img"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:id="@+id/branhes_list"
+            ></androidx.recyclerview.widget.RecyclerView>
+
+    </LinearLayout>
+    <ProgressBar
+        android:layout_width="@dimen/_50sdp"
+        android:layout_height="@dimen/_50sdp"
+        android:indeterminateTint="@color/colorOrange"
+        android:id="@+id/loading"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"/>
+
+</RelativeLayout>

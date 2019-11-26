@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="@dimen/_130sdp">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_130sdp"
+        android:src="@drawable/topimage"
+        android:scaleType="fitXY"
+        />
+    <ImageView
+        android:layout_width="@dimen/_120sdp"
+        android:layout_height="@dimen/_70sdp"
+        android:src="@drawable/rostologo"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        />
+</RelativeLayout>

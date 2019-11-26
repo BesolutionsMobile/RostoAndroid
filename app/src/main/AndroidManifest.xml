@@ -14,7 +14,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Design.Light.NoActionBar"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Scenarios.ScenarioThree.Controller.Change_Pass"></activity>
+
+        <activity android:name=".Scenarios.ScenarioThree.Controller.Who_Are"/>
+        <activity android:name=".Scenarios.ScenarioSeven.Controller.Product"/>
+        <activity android:name=".Scenarios.ScenarioSeven.Controller.Product_Details"/>
+        <activity android:name=".Scenarios.ScenarioSeven.Controller.My_Cart"></activity>
+        <activity android:name=".Scenarios.ScenarioSex.Controller.Home" />
+        <activity android:name=".Scenarios.ScenarioThree.Controller.Change_Pass" />
         <activity android:name=".Scenarios.ScenarioThree.Controller.Edit_Profile" />
         <activity android:name=".Scenarios.ScenarioTwo.Controller.Sign_Up" />
         <activity android:name=".Scenarios.ScenarioTwo.Controller.SignIn" />

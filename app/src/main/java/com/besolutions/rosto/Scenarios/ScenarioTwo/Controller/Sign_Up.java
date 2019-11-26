@@ -16,6 +16,8 @@ import com.besolutions.rosto.NetworkLayar.NetworkInterface;
 import com.besolutions.rosto.NetworkLayar.ResponseModel;
 import com.besolutions.rosto.R;
 import com.besolutions.rosto.Scenarios.ScenarioOne.Controller.MainActivity;
+import com.besolutions.rosto.Scenarios.ScenarioTwo.Model.Model_SignUp;
+import com.google.gson.Gson;
 
 public class Sign_Up extends AppCompatActivity implements NetworkInterface {
 
@@ -60,9 +62,12 @@ public class Sign_Up extends AppCompatActivity implements NetworkInterface {
     @Override
     public void OnResponse(ResponseModel model) {
 
-        Toast.makeText(this, "تم انشاء حساب جديد بنجاح", Toast.LENGTH_SHORT).show();
-        startActivity(new Intent(Sign_Up.this, MainActivity.class));
-        pg.cancel();
+        Gson gson = new Gson();
+
+        Model_SignUp model_signUp = gson.fromJson(model.getResponse(),Model_SignUp.class);
+
+        Toast.makeText(this, ""+model_signUp.getStatus(), Toast.LENGTH_SHORT).show();
+
     }
 
     @Override

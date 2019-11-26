@@ -51,10 +51,10 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.5"
-                android:text=""
+                android:text="odowmd"
                 android:textColor="@color/colorOrange"
                 android:fontFamily="@font/thesansbold"
-                android:paddingRight="10dp"
+                android:paddingLeft="10dp"
                 android:gravity="center_vertical"/>
 
             <TextView

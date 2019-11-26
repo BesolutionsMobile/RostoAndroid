@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_35sdp"
+    android:paddingRight="@dimen/_5sdp"
+    android:gravity="center|right"
+    android:weightSum="1">
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_15sdp"
+        android:layout_weight="0.1"
+        android:src="@drawable/delete"
+        android:tint="@color/colorOrange"/>
+
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight=".12"
+        android:text="500"
+        android:textColor="@color/colorb"
+        android:gravity="center"
+        android:maxLines="1"
+        android:textSize="@dimen/_10sdp"
+        android:fontFamily="@font/thesansbold"/>
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight=".12"
+        android:text="2"
+        android:maxLines="1"
+        android:textColor="@color/colorb"
+        android:gravity="center"
+        android:textSize="@dimen/_10sdp"
+        android:fontFamily="@font/thesansbold"/>
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight=".18"
+        android:text="وسط"
+        android:maxLines="1"
+        android:textColor="@color/colorb"
+        android:gravity="center"
+        android:textSize="@dimen/_10sdp"
+        android:fontFamily="@font/thesansbold"/>
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight=".45"
+        android:text="فرخة مشوية + رز + سلطة"
+        android:textColor="@color/colorb"
+        android:gravity="center|right"
+        android:maxLines="1"
+        android:paddingRight="@dimen/_5sdp"
+        android:textSize="@dimen/_10sdp"
+        android:fontFamily="@font/thesansbold"/>
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_7sdp"
+        android:layout_weight=".03"
+        android:src="@drawable/orange_point"
+        android:paddingLeft="@dimen/_3sdp"/>
+
+
+
+
+</LinearLayout>

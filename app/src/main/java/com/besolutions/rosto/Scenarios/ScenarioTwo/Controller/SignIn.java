@@ -22,6 +22,7 @@ import com.besolutions.rosto.NetworkLayar.Apicalls;
 import com.besolutions.rosto.NetworkLayar.NetworkInterface;
 import com.besolutions.rosto.NetworkLayar.ResponseModel;
 import com.besolutions.rosto.R;
+import com.besolutions.rosto.Scenarios.ScenarioOne.Controller.MainActivity;
 import com.besolutions.rosto.Scenarios.ScenarioTwo.Model.UserFinalResponse;
 import com.google.gson.Gson;
 
@@ -79,22 +80,33 @@ public class SignIn extends AppCompatActivity  implements NetworkInterface {
     @Override
     public void OnResponse(ResponseModel model) {
 
+        pd.cancel();
         Gson gson = new Gson();
 
         //Toast.makeText(this, model.getResponse(), Toast.LENGTH_SHORT).show();
 
         UserFinalResponse user = gson.fromJson(model.getResponse(), UserFinalResponse.class);
 
-        Toast.makeText(this, user.getUserData().getName(), Toast.LENGTH_SHORT).show();
+        if (user.getStatus()== 1)
+        {
+            startActivity(new Intent(SignIn.this, MainActivity.class));
 
-        pd.cancel();
+        }else if (user.getStatus() == 2)
+        {
+            Toast.makeText(this, ""+user.getMessage(), Toast.LENGTH_SHORT).show();
+        }else
+        {
+            Toast.makeText(this, ""+user.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+
+
 
     }
 
     @Override
     public void OnError(VolleyError error) {
 
-        Toast.makeText(this, "error "+error.networkResponse.statusCode, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "error "+error.toString(), Toast.LENGTH_SHORT).show();
         pd.cancel();
 
 
