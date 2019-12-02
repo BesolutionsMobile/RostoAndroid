@@ -21,12 +21,14 @@
             android:gravity="bottom">
 
             <TextView
+                android:id="@+id/txtProductName"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_20sdp"
                 android:fontFamily="@font/thesansbold"
                 android:textColor="@color/colorb"
                 android:textSize="@dimen/_12sdp"
                 android:text="alla hassan"
+                android:singleLine="true"
                 android:layout_marginBottom="@dimen/_13sdp"
                 android:gravity="right"
                 android:paddingRight="@dimen/_2sdp"/>
@@ -54,11 +56,13 @@
 
 
                 <TextView
+                    android:id="@+id/txtProductPrice"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="0.5"
                     android:textColor="@color/colorw"
                     android:text="520"
+                    android:gravity="center_vertical|center_horizontal"
                     android:textSize="@dimen/_12sdp"
                     android:fontFamily="@font/thesansbold"
                     android:layout_gravity="center_vertical"
@@ -69,6 +73,7 @@
 
 
         <ImageView
+            android:id="@+id/imgProduct"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.35"

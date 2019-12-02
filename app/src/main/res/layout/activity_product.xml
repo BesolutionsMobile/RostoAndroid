@@ -26,6 +26,7 @@
             android:textSize="@dimen/_12sdp" />
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recProduct"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/_10sdp"
@@ -38,6 +39,7 @@
     </LinearLayout>
 
     <ProgressBar
+        android:id="@+id/loading"
         android:layout_width="@dimen/_50sdp"
         android:layout_height="@dimen/_50sdp"
         android:layout_centerInParent="true"

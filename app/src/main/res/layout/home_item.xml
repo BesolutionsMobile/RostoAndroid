@@ -36,6 +36,7 @@
                 app:cardPreventCornerOverlap="true">
 
                 <ImageView
+                    android:id="@+id/imgHome"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_80sdp"
                     android:scaleType="fitXY"
@@ -51,6 +52,7 @@
 
 
                 <TextView
+                    android:id="@+id/txtNameHome"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_23sdp"
                     android:fontFamily="@font/thesansbold"
@@ -63,6 +65,7 @@
                     android:textSize="@dimen/_11sdp" />
 
                 <TextView
+                    android:id="@+id/txtDescriptionHome"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_23sdp"
                     android:fontFamily="@font/segoeui"

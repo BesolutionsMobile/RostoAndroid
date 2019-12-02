@@ -24,6 +24,7 @@ import com.besolutions.rosto.NetworkLayar.ResponseModel;
 import com.besolutions.rosto.R;
 import com.besolutions.rosto.Scenarios.ScenarioOne.Controller.MainActivity;
 import com.besolutions.rosto.Scenarios.ScenarioTwo.Model.UserFinalResponse;
+import com.besolutions.rosto.local_data.send_data;
 import com.google.gson.Gson;
 
 import java.util.HashMap;
@@ -83,6 +84,8 @@ public class SignIn extends AppCompatActivity  implements NetworkInterface {
         pd.cancel();
         Gson gson = new Gson();
 
+        send_data send_data = new send_data();
+        send_data.userId_check(this,true);
         //Toast.makeText(this, model.getResponse(), Toast.LENGTH_SHORT).show();
 
         UserFinalResponse user = gson.fromJson(model.getResponse(), UserFinalResponse.class);
@@ -90,6 +93,12 @@ public class SignIn extends AppCompatActivity  implements NetworkInterface {
         if (user.getStatus()== 1)
         {
             startActivity(new Intent(SignIn.this, MainActivity.class));
+            Toast.makeText(this, ""+user.getMessage(), Toast.LENGTH_SHORT).show();
+
+            send_data.SET_USER_NAME(this,user.getUserData().getName());
+            send_data.SET_USER_EMAIL(this,user.getUserData().getMail());
+            send_data.SET_USER_PHONE(this,user.getUserData().getPhone());
+            send_data.SET_USER_ID(this,user.getUserData().getId());
 
         }else if (user.getStatus() == 2)
         {

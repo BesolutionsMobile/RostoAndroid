@@ -6,16 +6,21 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 
 import com.besolutions.rosto.R;
 import com.besolutions.rosto.Scenarios.ScenarioFour.Controller.Orders_Fragment;
+import com.besolutions.rosto.Scenarios.ScenarioSex.Controller.Home;
 import com.besolutions.rosto.Scenarios.ScenarioThree.Controller.Me_Fragment;
 import com.besolutions.rosto.Scenarios.SenarioFive.Controller.Branches_Fragment;
 import com.besolutions.rosto.Utils.TinyDB;
+import com.besolutions.rosto.local_data.saved_data;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.Timer;
@@ -31,17 +36,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         navigation = findViewById(R.id.navigation);
-        fragmentManager=getSupportFragmentManager();
+        fragmentManager = getSupportFragmentManager();
+        navigation.setSelectedItemId(R.id.branches);
+        Branches_Fragment branches_fragment = new Branches_Fragment();
+        loadFragment(branches_fragment);
 
-        navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener()
-        {
+        navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem)
-            {
-                switch (menuItem.getItemId())
-                {
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                switch (menuItem.getItemId()) {
                     case R.id.me:
 
                         Me_Fragment me_fragment = new Me_Fragment();
@@ -56,9 +60,19 @@ public class MainActivity extends AppCompatActivity {
                         return true;
 
                     case R.id.branches:
+                        saved_data saved_data = new saved_data();
 
-                        Branches_Fragment branches_fragment = new Branches_Fragment();
-                        loadFragment(branches_fragment);
+                        if (saved_data.get_branches(MainActivity.this).equals(1)) {
+
+                            Home home = new Home();
+                            loadFragment(home);
+
+                        } else {
+
+                            Branches_Fragment branches_fragment = new Branches_Fragment();
+                            loadFragment(branches_fragment);
+                        }
+
 
                         return true;
 
@@ -74,11 +88,24 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-    private void loadFragment(Fragment fragment)
-    {
 
-        fragmentTransaction=fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fragment_container,fragment);
+    @Override
+    public void onStart() {
+        this.registerReceiver(mReceiverLocation, new IntentFilter("delete_action"));
+
+        super.onStart();
+    }
+
+    @Override
+    public void onStop() {
+        this.unregisterReceiver(mReceiverLocation);
+        super.onStop();
+    }
+
+    private void loadFragment(Fragment fragment) {
+
+        fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_container, fragment);
         fragmentTransaction.commit();
     }
 
@@ -91,4 +118,18 @@ public class MainActivity extends AppCompatActivity {
         a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(a);
     }
+
+    private BroadcastReceiver mReceiverLocation = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            try {
+                //String deletedPrice = String.valueOf(intent.getSerializableExtra("category"));
+                // int deletes_price=count_price()-Integer.parseInt(deletedPrice);
+                navigation.setSelectedItemId(R.id.orders);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    };
 }

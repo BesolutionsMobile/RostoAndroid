@@ -19,15 +19,16 @@ public enum Apiclient
 
     LOGIN_USER("user/login/549834453/25598", Arrays.asList("mail", "password"),1),
     Register_Uer("user/register/549834453/25598", Arrays.asList("name", "mail","phone","password"),2),
-    Edit_Profile("/edite_profile", Arrays.asList("id_member","city","password","image","phone","name"),3),
-    Add_post("/add_post HTTP/", Arrays.asList("id_member","title","des","ciiiiiiiiiiiiiiiiiiiiiiity","category","price","tel","sub","x","x_2","x_3","x_4","x_5","x_6","x_7","x_8","device"),4),
-    Main_Ads("/select_haraj",null,5),
-    Suggest_Ads("/select_post_suggest_by_department", Collections.singletonList("Department"),6),
-    Epire_Ads("/select_expire_post_for_member", Collections.singletonList("id_member"),7),
-    Personal_Ads("/select_post_by_id", Collections.singletonList("id_member"),8),
-    Search_Ads("/search_app", Collections.singletonList("text_search"),9),
-    Select_By_department("/select_haraj_by_Department", Collections.singletonList("Department"),10),
-    Select_By_City("/select_haraj_by_search_city", Collections.singletonList("city"),11);
+    GET_ALL_BRANCHES("Branch/getAll/549834453/25598",null,3),
+    GET_ALL_SHOPS_CATEGORY("Category/getAllMainCategories/549834453/25598",null,4),
+    GET_PRODUCT_By_CATEGORY_ID_BRANCH_ID("Category/getCategoryProducutByBranchId/549834453/25598",null,5),
+    GET_PRODUCT_DETAILS("Product/productdetails/549834453/25598", null,6),
+    VIEW_PROFILE("user/view/549834453/25598",null,7),
+    EDIT_PROFILE("user/editProfile/549834453/25598", Arrays.asList("name","mail","phone","id_user"),8),
+    CHANGE_PASSWORD("user/update_password/549834453/25598", Arrays.asList("old_password","new_password","re_new_password","id_user"),9),
+    Search_Ads("/search_app", Collections.singletonList("text_search"),10),
+    Select_By_department("/select_haraj_by_Department", Collections.singletonList("Department"),11),
+    Select_By_City("/select_haraj_by_search_city", Collections.singletonList("city"),12);
 
 
 

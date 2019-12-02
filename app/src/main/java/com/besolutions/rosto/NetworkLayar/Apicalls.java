@@ -3,9 +3,11 @@ package com.besolutions.rosto.NetworkLayar;
 import android.content.Context;
 
 import com.android.volley.Request;
+import com.besolutions.rosto.R;
 
 import org.json.JSONException;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 
@@ -47,10 +49,10 @@ public class Apicalls
      * @func User Registration
      */
 
-    public void registerUser(final String Name, final String Email, final String Password, final String Phone)
+    public void registerUser(final String Name, final String Email, final String Phone, final String Password)
     {
 
-        apiRouter.performRequest(Apiclient.Register_Uer.getURL(),Apiclient.Register_Uer.getParams(), Arrays.asList(Email,Password,Phone, Name),Request.Method.POST,Apiclient.Register_Uer.getCode());
+        apiRouter.performRequest(Apiclient.Register_Uer.getURL(),Apiclient.Register_Uer.getParams(), Arrays.asList(Name,Email,Phone,Password),Request.Method.POST,Apiclient.Register_Uer.getCode());
 
 
     }
@@ -64,10 +66,10 @@ public class Apicalls
      * @func Edit User Profile
      */
 
-    public  void editProfile (final String Id_Number, final String City, final String Password, final String Image, final String Phone, final String Name )
+    public  void get_all_branches ()
     {
 
-        apiRouter.performRequest(Apiclient.Edit_Profile.getURL(),Apiclient.Edit_Profile.getParams(), Arrays.asList(Id_Number,City,Password,Image,Phone,Name),Request.Method.POST,Apiclient.Edit_Profile.getCode());
+        apiRouter.performRequest(Apiclient.GET_ALL_BRANCHES.getURL(),Apiclient.GET_ALL_BRANCHES.getParams(),null,Request.Method.GET,Apiclient.GET_ALL_BRANCHES.getCode());
 
     }
 
@@ -79,10 +81,10 @@ public class Apicalls
      * @func Add a new Ad
      */
 
-    public  void addPost (final String Id_Number, final String Title, final String Des, final String Cityyyyy, final String Category, final String Price, final String Tel, final String Sub, final String X, final String X2, final String X3, final String X4, final String X5, final String X6, final String X7, final String X8, final String Device)
+    public  void get_all_shops_category ()
     {
 
-        apiRouter.performRequest(Apiclient.Add_post.getURL(),Apiclient.Add_post.getParams(), Arrays.asList(Id_Number,Title,Des,Cityyyyy,Category,Price,Tel,Sub,X,X2,X3,X4,X5,X6,X7,X8,Device),Request.Method.POST,Apiclient.Add_post.getCode());
+        apiRouter.performRequest(Apiclient.GET_ALL_SHOPS_CATEGORY.getURL(),Apiclient.GET_ALL_SHOPS_CATEGORY.getParams(),null,Request.Method.GET,Apiclient.GET_ALL_SHOPS_CATEGORY.getCode());
 
     }
 
@@ -95,10 +97,10 @@ public class Apicalls
      *
      */
 
-    public void mainAds ()
+    public void get_product_by_category_id_branch_id (final String ID_Category ,final String ID_Branch)
     {
 
-        apiRouter.performRequest(Apiclient.Main_Ads.getURL(),Apiclient.Main_Ads.getParams(),null,Request.Method.POST, Apiclient.Main_Ads.getCode());
+        apiRouter.performRequest(Apiclient.GET_PRODUCT_By_CATEGORY_ID_BRANCH_ID.getURL()+"/"+ID_Category+"/"+ID_Branch,Apiclient.GET_PRODUCT_By_CATEGORY_ID_BRANCH_ID.getParams(),null,Request.Method.GET, Apiclient.GET_PRODUCT_By_CATEGORY_ID_BRANCH_ID.getCode());
 
     }
 
@@ -112,10 +114,10 @@ public class Apicalls
      */
 
 
-    public void suggestAds (final String Department)
+    public void get_product_details (final String ID_Product )
     {
 
-        apiRouter.performRequest(Apiclient.Suggest_Ads.getURL(),Apiclient.Suggest_Ads.getParams(), Collections.singletonList(Department),Request.Method.POST,Apiclient.Suggest_Ads.getCode());
+        apiRouter.performRequest(Apiclient.GET_PRODUCT_DETAILS.getURL()+"/"+ID_Product,Apiclient.GET_PRODUCT_DETAILS.getParams(),null,Request.Method.GET, Apiclient.GET_PRODUCT_DETAILS.getCode());
 
     }
 
@@ -127,10 +129,10 @@ public class Apicalls
      *
      */
 
-    public void epireAds (final String Id_Number)
+    public void edit_profile (final String Name,final String Mail,final String Phone,final String Id_user)
     {
 
-        apiRouter.performRequest(Apiclient.Epire_Ads.getURL(),Apiclient.Epire_Ads.getParams(), Collections.singletonList(Id_Number),Request.Method.POST,Apiclient.Epire_Ads.getCode());
+        apiRouter.performRequest(Apiclient.EDIT_PROFILE.getURL(),Apiclient.EDIT_PROFILE.getParams(),Arrays.asList(Name,Mail,Phone,Id_user),Request.Method.POST,Apiclient.EDIT_PROFILE.getCode());
 
     }
 
@@ -143,10 +145,27 @@ public class Apicalls
      *
      */
 
-    public void personalAds (final String Id_Number)
+    public void view_profile (final String Id_user)
     {
 
-        apiRouter.performRequest(Apiclient.Personal_Ads.getURL(),Apiclient.Personal_Ads.getParams(), Collections.singletonList(Id_Number),Request.Method.POST,Apiclient.Personal_Ads.getCode());
+        apiRouter.performRequest(Apiclient.VIEW_PROFILE.getURL()+"/"+Id_user,Apiclient.VIEW_PROFILE.getParams(),null,Request.Method.GET,Apiclient.VIEW_PROFILE.getCode());
+
+    }
+
+    //----------------------------------------------------------------------------------------------
+
+
+
+    /**
+     *
+     * @func Main Activity Ads
+     *
+     */
+
+    public void change_password (final String Old_password,final String New_password,final String Re_new_password,final String Id_user)
+    {
+
+        apiRouter.performRequest(Apiclient.CHANGE_PASSWORD.getURL(),Apiclient.CHANGE_PASSWORD.getParams(), Arrays.asList(Old_password,New_password, Re_new_password,Id_user),Request.Method.POST,Apiclient.CHANGE_PASSWORD.getCode());
 
     }
 

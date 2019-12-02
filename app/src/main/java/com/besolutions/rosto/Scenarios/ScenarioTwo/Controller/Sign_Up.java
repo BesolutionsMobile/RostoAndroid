@@ -18,6 +18,7 @@ import com.besolutions.rosto.NetworkLayar.ResponseModel;
 import com.besolutions.rosto.R;
 import com.besolutions.rosto.Scenarios.ScenarioOne.Controller.MainActivity;
 import com.besolutions.rosto.Scenarios.ScenarioTwo.Model.Model_SignUp;
+import com.besolutions.rosto.local_data.send_data;
 import com.google.gson.Gson;
 
 public class Sign_Up extends AppCompatActivity implements NetworkInterface {
@@ -68,6 +69,9 @@ public class Sign_Up extends AppCompatActivity implements NetworkInterface {
         Gson gson = new Gson();
 
         Model_SignUp signUp = gson.fromJson(model.getResponse(), Model_SignUp.class);
+
+        send_data send_data = new send_data();
+        send_data.SET_USER_ID(this,signUp.getIdUser());
 
         if (signUp.getStatus() == 1)
         {

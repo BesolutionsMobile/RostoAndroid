@@ -5,6 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <include layout="@layout/header_img"/>
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -241,6 +246,7 @@
             android:backgroundTint="@color/colorLighterGray"/>
 
         <Button
+            android:id="@+id/btnLogOut"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_35sdp"
             android:text="تسجيل الخروج"
@@ -255,6 +261,6 @@
     </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
-
+    </LinearLayout>
 
 </RelativeLayout>

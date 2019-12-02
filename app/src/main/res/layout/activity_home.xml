@@ -1,115 +1,119 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".Scenarios.ScenarioSex.Controller.Home">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                >
+                android:orientation="vertical">
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_130sdp">
+
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_130sdp"
-                        android:src="@drawable/topimage"
-                        android:tint="#6F000000"
                         android:scaleType="fitXY"
-                        />
+                        android:src="@drawable/topimage"
+                        android:tint="#6F000000" />
+
                     <TextView
+                        android:id="@+id/txtBranchName"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_60sdp"
-                        android:text="الفرع الاول"
-                        android:textSize="@dimen/_13ssp"
-                        android:gravity="center"
-                        android:id="@+id/bransh_name"
-                        android:textColor="@android:color/white"
                         android:fontFamily="@font/thesansbold"
-                        />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_marginBottom="@dimen/_35sdp"
-                        android:layout_marginRight="@dimen/_10sdp"
+                        android:gravity="center"
                         android:text="الفرع الاول"
-                        android:textSize="@dimen/_10ssp"
-                        android:gravity="center"
-                        android:layout_alignParentBottom="true"
                         android:textColor="@android:color/white"
-                        />
+                        android:textSize="@dimen/_13ssp" />
+
                     <TextView
+                        android:id="@+id/txtBranchName1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
-                        android:layout_marginBottom="@dimen/_20sdp"
-                        android:layout_marginRight="@dimen/_10sdp"
-                        android:text="01141012485"
-                        android:textSize="@dimen/_10ssp"
-                        android:gravity="center"
                         android:layout_alignParentBottom="true"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:layout_marginBottom="@dimen/_35sdp"
+                        android:gravity="center"
+                        android:text="الفرع الاول"
                         android:textColor="@android:color/white"
-                        />
+                        android:textSize="@dimen/_10ssp" />
+
+                    <TextView
+                        android:id="@+id/txtBranchPhone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:layout_marginBottom="@dimen/_20sdp"
+                        android:gravity="center"
+                        android:text="01141012485"
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/_10ssp" />
                 </RelativeLayout>
+
                 <TextView
                     android:layout_width="match_parent"
-                    android:gravity="center|right"
-                    android:textSize="@dimen/_12ssp"
-                    android:textColor="@android:color/black"
-                    android:fontFamily="@font/thesansbold"
-                    android:paddingRight="@dimen/_20sdp"
                     android:layout_height="@dimen/_20sdp"
                     android:layout_marginTop="@dimen/_15sdp"
+                    android:fontFamily="@font/thesansbold"
+                    android:gravity="center|right"
+                    android:paddingRight="@dimen/_20sdp"
                     android:text="الاصناف"
-                    />
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/_12ssp" />
+
                 <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recHome"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/catList"
-                    android:layout_marginRight="@dimen/_10sdp"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/_10sdp"
-                    android:layout_marginBottom="@dimen/_40sdp"
-                    ></androidx.recyclerview.widget.RecyclerView>
+                    android:layout_marginRight="@dimen/_10sdp"></androidx.recyclerview.widget.RecyclerView>
 
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
 
         <ProgressBar
+            android:id="@+id/loading"
             android:layout_width="@dimen/_50sdp"
             android:layout_height="@dimen/_50sdp"
-            android:indeterminateTint="@color/colorOrange"
-            android:id="@+id/loading"
             android:layout_centerInParent="true"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            android:indeterminateTint="@color/colorOrange" />
+
         <androidx.cardview.widget.CardView
             android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_40sdp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/_103sdp"
-            android:src="@drawable/splash"
             android:scaleType="fitXY"
+            android:src="@drawable/splash"
             app:cardCornerRadius="@dimen/_5sdp"
             app:cardElevation="@dimen/_5sdp"
-            app:cardPreventCornerOverlap="true"
-            android:layout_height="@dimen/_40sdp">
+            app:cardPreventCornerOverlap="true">
+
             <ImageView
+                android:id="@+id/imgBranchImage"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/productImg"
                 android:scaleType="fitXY"
-                android:src="@drawable/splash"
-                />
+                android:src="@drawable/splash" />
         </androidx.cardview.widget.CardView>
     </RelativeLayout>
 
