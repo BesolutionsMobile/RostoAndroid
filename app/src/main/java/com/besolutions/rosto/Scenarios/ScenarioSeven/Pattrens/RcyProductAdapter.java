@@ -88,6 +88,7 @@ public class RcyProductAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
                 FragmentTransaction fr = ((AppCompatActivity)mContext).getSupportFragmentManager().beginTransaction();
                 fr.replace(R.id.fragment_container,new Product_Details());
+                fr.addToBackStack(null);
                 fr.commit();
 
             }

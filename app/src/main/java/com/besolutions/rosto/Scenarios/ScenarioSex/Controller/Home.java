@@ -47,6 +47,7 @@ public class Home extends Fragment implements NetworkInterface {
     {
         view = inflater.inflate(R.layout.activity_home, container, false);
 
+        catrgoryList.clear();
         tinyDB = new TinyDB(getContext());
 
         txtname = view.findViewById(R.id.txtBranchName);

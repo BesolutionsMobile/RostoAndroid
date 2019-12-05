@@ -2,11 +2,8 @@ package com.besolutions.rosto.Scenarios.ScenarioSeven.Controller;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -26,15 +23,11 @@ import com.besolutions.rosto.NetworkLayar.Apicalls;
 import com.besolutions.rosto.NetworkLayar.NetworkInterface;
 import com.besolutions.rosto.NetworkLayar.ResponseModel;
 import com.besolutions.rosto.R;
-import com.besolutions.rosto.Scenarios.ScenarioFour.Controller.Orders_Fragment;
-import com.besolutions.rosto.Scenarios.ScenarioOne.Controller.MainActivity;
 import com.besolutions.rosto.Scenarios.ScenarioSeven.Model.Cart_Model;
 import com.besolutions.rosto.Scenarios.ScenarioSeven.Model.Model_Product_Details;
 import com.besolutions.rosto.Scenarios.ScenarioSeven.Model.Price_Details;
-import com.besolutions.rosto.Scenarios.ScenarioSeven.Pattrens.Realm_adapter;
-import com.besolutions.rosto.Scenarios.ScenarioSex.Controller.Home;
+import com.besolutions.rosto.Utils.Realm_adapter;
 import com.besolutions.rosto.local_data.saved_data;
-import com.besolutions.rosto.local_data.send_data;
 import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 
@@ -52,9 +45,10 @@ public class Product_Details extends Fragment implements NetworkInterface {
     ProgressBar pg;
     Realm realm;
     String size;
+    String size_id;
     int num = 1;
     private View view;
-    int x = 0;
+
 
 
 
@@ -81,7 +75,7 @@ public class Product_Details extends Fragment implements NetworkInterface {
         btnaddtocart = view.findViewById(R.id.btnProductDetailsAddCart);
 
 
-        saved_data saved_data = new saved_data();
+        final saved_data saved_data = new saved_data();
         String product_id = saved_data.get_product_id(getContext());
 
         new Apicalls(getContext(),Product_Details.this).get_product_details(product_id);
@@ -90,15 +84,15 @@ public class Product_Details extends Fragment implements NetworkInterface {
             @Override
             public void onClick(View v) {
 
-                x=1;
-                send_data send_data = new send_data();
-                send_data.SET_BRANCHES_ID(getContext(),x);
 
+                String product_id = saved_data.get_product_id(getContext());
                 Cart_Model c = new Cart_Model();
                 c.setTxtname(txtname.getText().toString());
                 c.setTxtprice(txtprice.getText().toString());
                 c.setTxtquntity(txtnumber.getText().toString());
+                c.setIdproduct(product_id);
                 c.setTxtsize(size);
+                c.setSize_id(size_id);
 
                 Realm_adapter adapter = new Realm_adapter(realm);
 
@@ -221,6 +215,7 @@ public class Product_Details extends Fragment implements NetworkInterface {
 
                txtprice.setText(price_details[position].getPrice());
                size = price_details[position].getSize();
+               size_id = price_details[position].getIdSize();
 
             }
 

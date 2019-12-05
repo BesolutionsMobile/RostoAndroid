@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -84,8 +85,10 @@ public class RcyMainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
                 send_data send_data = new send_data();
                 send_data.id_branches(mContext,mMainList.get(position).getId());
+                //Toast.makeText(mContext, ""+mMainList.get(position).getId(), Toast.LENGTH_SHORT).show();
                 FragmentTransaction fr = ((AppCompatActivity)mContext).getSupportFragmentManager().beginTransaction();
                 fr.replace(R.id.fragment_container,new Home());
+                fr.addToBackStack(null);
                 fr.commit();
                 //Intent intent = new Intent(mContext, Home.class);
                 //mContext.startActivity(intent);

@@ -1,4 +1,4 @@
-package com.besolutions.rosto.Scenarios.ScenarioSeven.Controller;
+package com.besolutions.rosto.Utils;
 
 import android.app.Application;
 
@@ -10,7 +10,8 @@ public class BaseApplication extends Application {
     public void onCreate() {
         super.onCreate();
         Realm.init(this);
-        RealmConfiguration config = new RealmConfiguration.Builder().build();
+        RealmConfiguration config = new RealmConfiguration.Builder().deleteRealmIfMigrationNeeded().build();
         Realm.setDefaultConfiguration(config);
+
     }
 }

@@ -26,7 +26,7 @@ public enum Apiclient
     VIEW_PROFILE("user/view/549834453/25598",null,7),
     EDIT_PROFILE("user/editProfile/549834453/25598", Arrays.asList("name","mail","phone","id_user"),8),
     CHANGE_PASSWORD("user/update_password/549834453/25598", Arrays.asList("old_password","new_password","re_new_password","id_user"),9),
-    Search_Ads("/search_app", Collections.singletonList("text_search"),10),
+    SEND_ORDER("cart/sendOrder/549834453/25598", Arrays.asList("name","street","building","floor","flat","mobile","longitude","latitude","notes","id_user","id_branch","products"),10),
     Select_By_department("/select_haraj_by_Department", Collections.singletonList("Department"),11),
     Select_By_City("/select_haraj_by_search_city", Collections.singletonList("city"),12);
 

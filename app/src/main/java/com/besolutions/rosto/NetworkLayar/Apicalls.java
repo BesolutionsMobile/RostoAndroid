@@ -178,10 +178,10 @@ public class Apicalls
      *
      */
 
-    public void searchAds (final String Text_Search)
+    public void sendOrder (final String Name,final String Street,final String Building,final String Floor,final String Flat,final String Mobile,final String Logtitude,final String Latitude,final String Notes,final String IdUser,final String IDBranch,final String Products)
     {
 
-        apiRouter.performRequest(Apiclient.Search_Ads.getURL(),Apiclient.Search_Ads.getParams(), Collections.singletonList(Text_Search),Request.Method.POST,Apiclient.Search_Ads.getCode());
+        apiRouter.performRequest(Apiclient.SEND_ORDER.getURL(),Apiclient.SEND_ORDER.getParams(), Arrays.asList(Name,Street,Building,Floor,Flat,Mobile,Logtitude,Latitude,Notes,IdUser,IDBranch,Products),Request.Method.POST,Apiclient.SEND_ORDER.getCode());
 
     }
 

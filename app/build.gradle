@@ -61,5 +61,8 @@ dependencies {
     implementation 'com.intuit.sdp:sdp-android:1.0.5'
     implementation 'com.intuit.ssp:ssp-android:1.0.5'
 
+    //expendable TextView for FAQ
+    implementation 'com.ms-square:expandableTextView:0.1.4'
+
 
 }

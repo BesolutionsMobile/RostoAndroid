@@ -79,6 +79,7 @@ public class RcyMainGridAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                 //mContext.startActivity(new Intent(mContext, Product.class).putExtra("id_home",mMainGridList.get(position).getId()));
                 FragmentTransaction fr = ((AppCompatActivity)mContext).getSupportFragmentManager().beginTransaction();
                 fr.replace(R.id.fragment_container,new Product());
+                fr.addToBackStack(null);
                 fr.commit();
             }
         });

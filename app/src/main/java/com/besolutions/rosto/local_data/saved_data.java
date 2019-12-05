@@ -8,8 +8,8 @@ import static android.content.Context.MODE_PRIVATE;
 public class saved_data {
     public static String get_Branch_id(Context context)
     {
-        SharedPreferences sharedPreferences=context.getSharedPreferences("id",MODE_PRIVATE);
-        String branch_id=sharedPreferences.getString("id","0");
+        SharedPreferences sharedPreferences=context.getSharedPreferences("branch_id",MODE_PRIVATE);
+        String branch_id=sharedPreferences.getString("branch_id","0");
         return branch_id;
     }
 
@@ -57,10 +57,4 @@ public class saved_data {
         return value;
     }
 
-    public static String get_branches(Context context)
-    {
-        SharedPreferences sharedPreferences=context.getSharedPreferences("branch_id",MODE_PRIVATE);
-        String branch_id=sharedPreferences.getString("branch_id","0");
-        return branch_id;
-    }
 }

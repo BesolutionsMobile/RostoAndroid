@@ -1,16 +1,16 @@
 package com.besolutions.rosto.Scenarios.SenarioFive.Controller;
 
-import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -19,22 +19,29 @@ import com.besolutions.rosto.NetworkLayar.Apicalls;
 import com.besolutions.rosto.NetworkLayar.NetworkInterface;
 import com.besolutions.rosto.NetworkLayar.ResponseModel;
 import com.besolutions.rosto.R;
+import com.besolutions.rosto.Scenarios.ScenarioOne.Pattrens.IFOnBackPressed;
+import com.besolutions.rosto.Utils.Realm_adapter;
+import com.besolutions.rosto.Scenarios.ScenarioSex.Controller.Home;
 import com.besolutions.rosto.Scenarios.SenarioFive.Model.Branch;
 import com.besolutions.rosto.Scenarios.SenarioFive.Model.Model_branches;
 import com.besolutions.rosto.Scenarios.SenarioFive.Pattrens.RcyMainAdapter;
-import com.besolutions.rosto.Utils.TinyDB;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Branches_Fragment extends Fragment implements NetworkInterface {
+import io.realm.Realm;
+
+public class Branches_Fragment extends Fragment implements NetworkInterface, IFOnBackPressed {
     private View view;
 
     Branch[] branches;
 
     RecyclerView recyclerView;
     ProgressBar pgb;
+
+    Branches_Fragment branches_fragment;
+    Realm realm;
 
     List<Branch> branchesList = new ArrayList<>();
 
@@ -44,12 +51,33 @@ public class Branches_Fragment extends Fragment implements NetworkInterface {
     {
         view = inflater.inflate(R.layout.branches_fragment, container, false);
 
+        Realm.init(getContext());
+        branchesList.clear();
+        check_cart();
         recyclerView = view.findViewById(R.id.recBranches);
 
         pgb= view.findViewById(R.id.pg);
 
         new Apicalls(getContext(),Branches_Fragment.this).get_all_branches();
 
+/*
+        branches_fragment.getView().setFocusableInTouchMode(true);
+        branches_fragment.getView().requestFocus();
+        branches_fragment.getView().setOnKeyListener( new View.OnKeyListener()
+        {
+            @Override
+            public boolean onKey( View v, int keyCode, KeyEvent event )
+            {
+                if( keyCode == KeyEvent.KEYCODE_BACK )
+                {
+                    return true;
+                }
+                return false;
+            }
+        } );
+
+
+ */
         return view;
     }
 
@@ -104,5 +132,29 @@ public class Branches_Fragment extends Fragment implements NetworkInterface {
     public void OnError(VolleyError error) {
 
         pgb.setVisibility(View.GONE);
+    }
+
+    private void check_cart()
+    {
+        Realm_adapter adapter = new Realm_adapter(realm);
+        if(adapter.retrieve().size()>0)
+        {
+            FragmentTransaction fr = getActivity().getSupportFragmentManager().beginTransaction();
+            fr.replace(R.id.fragment_container,new Home());
+            fr.commit();
+        }
+
+    }
+
+
+    @Override
+    public boolean onBackPressed() {
+
+        Intent a = new Intent(Intent.ACTION_MAIN);
+        a.addCategory(Intent.CATEGORY_HOME);
+        a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        getActivity().startActivity(a);
+        getActivity().finish();
+        return true;
     }
 }

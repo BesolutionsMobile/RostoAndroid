@@ -49,6 +49,7 @@ public class SplashActivity extends AppCompatActivity {
 
     @Override
     protected void onResume() {
+
         super.onResume();
 
         TimerTask timerTask = new TimerTask() {
@@ -62,12 +63,13 @@ public class SplashActivity extends AppCompatActivity {
                 if (saved_data.get_user_check(SplashActivity.this)==false) {
 
                     startActivity(new Intent(getApplicationContext(), SignIn.class));
+                    finish();
 
                 }
                 if (saved_data.get_user_check(SplashActivity.this) == true) {
 
                     startActivity(new Intent(getApplicationContext(), MainActivity.class));
-
+                    finish();
                 }
 
             }

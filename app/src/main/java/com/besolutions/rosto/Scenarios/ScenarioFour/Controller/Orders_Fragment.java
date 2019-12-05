@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,27 +12,25 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.besolutions.rosto.R;
+import com.besolutions.rosto.Scenarios.ScenarioOne.Pattrens.IFOnBackPressed;
 import com.besolutions.rosto.Scenarios.ScenarioSeven.Model.Cart_Model;
 import com.besolutions.rosto.Scenarios.ScenarioSeven.Pattrens.RcyCartAdapter;
-import com.besolutions.rosto.Scenarios.ScenarioSeven.Pattrens.Realm_adapter;
-import com.besolutions.rosto.Scenarios.SenarioFive.Controller.Branches_Fragment;
+import com.besolutions.rosto.Utils.Realm_adapter;
 
 import java.util.ArrayList;
 
 import io.realm.Realm;
 
-public class Orders_Fragment extends Fragment {
+public class Orders_Fragment extends Fragment implements IFOnBackPressed {
 
     private View view;
     Realm realm;
@@ -65,9 +62,10 @@ public class Orders_Fragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                FragmentTransaction fr = getActivity().getSupportFragmentManager().beginTransaction();
-                fr.replace(R.id.fragment_container,new Branches_Fragment());
-                fr.commit();
+                String price = "";
+                Intent in = new Intent("add_order_action");
+                in.putExtra("category", price);
+                getContext().sendBroadcast(in);
 
             }
         });
@@ -78,6 +76,7 @@ public class Orders_Fragment extends Fragment {
 
                 FragmentTransaction fr = getActivity().getSupportFragmentManager().beginTransaction();
                 fr.replace(R.id.fragment_container,new Order_Information());
+                fr.addToBackStack(null);
                 fr.commit();
 
             }
@@ -165,4 +164,15 @@ public class Orders_Fragment extends Fragment {
             }
         }
     };
+
+    @Override
+    public boolean onBackPressed() {
+
+        Intent a = new Intent(Intent.ACTION_MAIN);
+        a.addCategory(Intent.CATEGORY_HOME);
+        a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        getActivity().startActivity(a);
+        getActivity().finish();
+        return true;
+    }
 }

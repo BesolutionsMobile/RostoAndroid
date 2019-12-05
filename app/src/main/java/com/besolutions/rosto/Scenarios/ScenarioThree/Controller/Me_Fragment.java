@@ -13,10 +13,11 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.besolutions.rosto.R;
+import com.besolutions.rosto.Scenarios.ScenarioOne.Pattrens.IFOnBackPressed;
 import com.besolutions.rosto.Scenarios.ScenarioTwo.Controller.SignIn;
 import com.besolutions.rosto.local_data.send_data;
 
-public class Me_Fragment extends Fragment {
+public class Me_Fragment extends Fragment implements IFOnBackPressed {
 
     private View view;
     TextView txtprofile,txtpass;
@@ -76,4 +77,13 @@ public class Me_Fragment extends Fragment {
     }
 
 
+    @Override
+    public boolean onBackPressed() {
+        Intent a = new Intent(Intent.ACTION_MAIN);
+        a.addCategory(Intent.CATEGORY_HOME);
+        a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        getActivity().startActivity(a);
+        getActivity().finish();
+        return true;
+    }
 }

@@ -49,7 +49,7 @@ public class Product extends Fragment implements NetworkInterface {
         view = inflater.inflate(R.layout.activity_product, container, false);
         recyclerView = view.findViewById(R.id.recProduct);
         pg = view.findViewById(R.id.loading);
-
+        productesList.clear();
         tinyDB = new TinyDB(getContext());
         saved_data saved_data = new saved_data();
         String id = saved_data.get_Branch_id(getContext());

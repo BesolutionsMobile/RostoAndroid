@@ -9,9 +9,9 @@ public class send_data {
     // SET BRANCH ID
     public static void id_branches(Context context, String branch_id)
     {
-        SharedPreferences sharedPreferences=context.getSharedPreferences("id",MODE_PRIVATE);
+        SharedPreferences sharedPreferences=context.getSharedPreferences("branch_id",MODE_PRIVATE);
         SharedPreferences.Editor editor=sharedPreferences.edit();
-        editor.putString("id", branch_id);
+        editor.putString("branch_id", branch_id);
         editor.commit();
     }
 
@@ -67,11 +67,5 @@ public class send_data {
         editor.putBoolean("islogin",value);
         editor.commit();
     }
-    public static void SET_BRANCHES_ID(Context context, int branch_id)
-    {
-        SharedPreferences sharedPreferences=context.getSharedPreferences("branch_id",MODE_PRIVATE);
-        SharedPreferences.Editor editor=sharedPreferences.edit();
-        editor.putString("branch_id", String.valueOf(branch_id));
-        editor.commit();
-    }
+
 }

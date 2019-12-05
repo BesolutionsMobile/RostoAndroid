@@ -1,4 +1,4 @@
-package com.besolutions.rosto.Scenarios.ScenarioSeven.Pattrens;
+package com.besolutions.rosto.Utils;
 
 import com.besolutions.rosto.Scenarios.ScenarioSeven.Model.Cart_Model;
 
@@ -88,5 +88,18 @@ public class Realm_adapter {
         return cart_data;
 
     }
+    public void delete_all() {
 
-}
+        realm = Realm.getDefaultInstance();
+
+        final RealmResults<Cart_Model> results = realm.where(Cart_Model.class).findAll();
+        realm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+
+                realm.deleteAll();
+
+            }
+        });
+    }
+    }

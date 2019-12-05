@@ -1,18 +1,14 @@
 package com.besolutions.rosto.Scenarios.ScenarioSeven.Pattrens;
 
 import android.app.AlertDialog;
-import android.app.DatePickerDialog;
-import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,15 +18,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.besolutions.rosto.R;
 import com.besolutions.rosto.Scenarios.ScenarioFour.Controller.Orders_Fragment;
-import com.besolutions.rosto.Scenarios.ScenarioSeven.Controller.Product_Details;
 import com.besolutions.rosto.Scenarios.ScenarioSeven.Model.Cart_Model;
-import com.besolutions.rosto.Scenarios.ScenarioSeven.Model.Productes;
+import com.besolutions.rosto.Utils.Realm_adapter;
 import com.besolutions.rosto.Utils.TinyDB;
-import com.besolutions.rosto.local_data.send_data;
-import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import io.realm.Realm;
 
