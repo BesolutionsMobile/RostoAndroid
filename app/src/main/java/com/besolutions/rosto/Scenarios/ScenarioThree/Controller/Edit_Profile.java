@@ -16,9 +16,14 @@ import com.besolutions.rosto.NetworkLayar.ResponseModel;
 import com.besolutions.rosto.R;
 import com.besolutions.rosto.Scenarios.ScenarioThree.Model.Model_Edit_Profile;
 import com.besolutions.rosto.Scenarios.ScenarioThree.Model.Model_View_Profile;
+import com.besolutions.rosto.Scenarios.ScenarioThree.Model.Question;
 import com.besolutions.rosto.local_data.saved_data;
 import com.besolutions.rosto.local_data.send_data;
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
 import com.google.gson.Gson;
+
+import es.dmoral.toasty.Toasty;
 
 public class Edit_Profile extends AppCompatActivity implements NetworkInterface {
 
@@ -37,7 +42,6 @@ public class Edit_Profile extends AppCompatActivity implements NetworkInterface 
         editphone = findViewById(R.id.editPhoneProfile);
         btnedit = findViewById(R.id.btnEditProfile);
         pg = findViewById(R.id.loading);
-
         final String user_id = saved_data.get_user_id(this);
 
         //Toast.makeText(this, ""+saved_data.get_user_id(this), Toast.LENGTH_SHORT).show();
@@ -47,9 +51,44 @@ public class Edit_Profile extends AppCompatActivity implements NetworkInterface 
         btnedit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                pg.setVisibility(View.VISIBLE);
-                new Apicalls(Edit_Profile.this, Edit_Profile.this).edit_profile(editname.getText().toString(), editmail.getText().toString(), editphone.getText().toString(), user_id);
 
+
+                if (editname.getText().toString().equals("")) {
+                    editname.setError("من فضلك ادخل الاسم !");
+                    YoYo.with(Techniques.Flash)
+                            .duration(800)
+                            .repeat(1)
+                            .playOn(findViewById(R.id.editUserNmeProfile));
+
+                    Toasty.error(Edit_Profile.this, "من فضلك ادخل الاسم!", Toast.LENGTH_SHORT).show();
+
+                } else if (editmail.getText().toString().equals("")) {
+
+                    editmail.setError("من فضلك ادخل البريد الالكتروني !");
+                    YoYo.with(Techniques.Flash)
+                            .duration(800)
+                            .repeat(1)
+                            .playOn(findViewById(R.id.editEmailProfile));
+
+                    Toasty.error(Edit_Profile.this, "من فضلك ادخل البريد الالكتروني!", Toast.LENGTH_SHORT).show();
+
+
+                } else if (editphone.getText().toString().equals("")) {
+                    editphone.setError("من فضلك ادخل الرقم السري !");
+
+                    YoYo.with(Techniques.Flash)
+                            .duration(800)
+                            .repeat(1)
+                            .playOn(findViewById(R.id.editPhoneProfile));
+
+                    Toasty.error(Edit_Profile.this, "من فضلك ادخل الرقم السري!", Toast.LENGTH_SHORT).show();
+
+                }else {
+
+                    pg.setVisibility(View.VISIBLE);
+                    new Apicalls(Edit_Profile.this, Edit_Profile.this).edit_profile(editname.getText().toString(), editmail.getText().toString(), editphone.getText().toString(), user_id);
+
+                }
             }
         });
 
@@ -87,13 +126,14 @@ public class Edit_Profile extends AppCompatActivity implements NetworkInterface 
                     send_data.SET_USER_EMAIL(this,modelViewProfile.getUser().getMail());
                     send_data.SET_USER_PHONE(this,modelViewProfile.getUser().getPhone());
                     send_data.SET_USER_ID(this,modelViewProfile.getUser().getId());
+
                 }else if (modelViewProfile.getStatus()==2)
                 {
-                    Toast.makeText(this, ""+modelViewProfile.getStatus(), Toast.LENGTH_SHORT).show();
+                    Toasty.error(this, ""+modelViewProfile.getStatus(), Toast.LENGTH_SHORT).show();
 
                 }else if (modelViewProfile.getStatus()==3)
                 {
-                    Toast.makeText(this, ""+modelViewProfile.getStatus(), Toast.LENGTH_SHORT).show();
+                    Toasty.error(this, "" + modelViewProfile.getStatus(), Toast.LENGTH_SHORT).show();
                 }
 
 
@@ -105,13 +145,32 @@ public class Edit_Profile extends AppCompatActivity implements NetworkInterface 
                 {
 
                 }else if (edit_profile.getStatus() == 1) {
-                    Toast.makeText(this, "" + edit_profile.getMessage(), Toast.LENGTH_SHORT).show();
+
+                    Toasty.success(this,"تم تحديث البيانات الشخصية بنجاح.", Toast.LENGTH_SHORT).show();
 
                 } else if (edit_profile.getStatus() == 2) {
-                    Toast.makeText(this, "" + edit_profile.getMessage(), Toast.LENGTH_SHORT).show();
+
+
+                    YoYo.with(Techniques.Flash)
+                            .duration(800)
+                            .repeat(1)
+                            .playOn(findViewById(R.id.editEmailProfile));
+
+                    YoYo.with(Techniques.Flash)
+                            .duration(800)
+                            .repeat(1)
+                            .playOn(findViewById(R.id.editPhoneProfile));
+
+                    editmail.setError("من فضلك راجع البريد الاكتروني الخاصة بك.");
+
+                    editphone.setError("رقم الهاتف مستخدم مسبقا.");
+
+
+                    Toasty.error(this, "خطا في البريد الالكتروني او رقم الهاتف.", Toast.LENGTH_SHORT).show();
 
                 } else if (edit_profile.getStatus() == 3) {
-                    Toast.makeText(this, "" + edit_profile.getMessage(), Toast.LENGTH_SHORT).show();
+
+                    Toasty.error(this, ""+edit_profile.getMessage(), Toast.LENGTH_SHORT).show();
                 }
 
         }
@@ -122,7 +181,7 @@ public class Edit_Profile extends AppCompatActivity implements NetworkInterface 
 
         pg.setVisibility(View.GONE);
 
-        Toast.makeText(this, "" + error.toString(), Toast.LENGTH_SHORT).show();
+        Toasty.error(this, "" + error.toString(), Toast.LENGTH_SHORT).show();
 
     }
 }

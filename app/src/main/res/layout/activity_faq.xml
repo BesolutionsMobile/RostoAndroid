@@ -9,19 +9,12 @@
     tools:context=".Scenarios.ScenarioThree.Controller.FAQ">
 
     <include layout="@layout/header_img"/>
-    <ExpandableListView
-        android:id="@+id/etv"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcyFaq"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="@dimen/_5ssp"
-        android:layout_margin="@dimen/_4sdp"
-        android:layout_gravity="center_vertical|center_horizontal"
-        android:layoutDirection="rtl"
-        android:elevation="@dimen/_5ssp"
-        android:keepScreenOn="false"
-        android:fadingEdge="vertical"
-        android:theme="@style/TextAppearance.Design.CollapsingToolbar.Expanded"
-        >
+        android:layout_margin="@dimen/_7ssp">
+    </androidx.recyclerview.widget.RecyclerView>
 
-    </ExpandableListView>
+
 </LinearLayout>

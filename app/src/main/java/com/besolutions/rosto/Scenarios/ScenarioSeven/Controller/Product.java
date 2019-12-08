@@ -100,6 +100,8 @@ public class Product extends Fragment implements NetworkInterface {
         {
 
             Toast.makeText(getContext(), " لا توجد بيانات..", Toast.LENGTH_SHORT).show();
+
+
         }else
         {
             Toast.makeText(getContext(), ""+model_product.getStatus() , Toast.LENGTH_SHORT).show();
@@ -120,4 +122,6 @@ public class Product extends Fragment implements NetworkInterface {
         Toast.makeText(getContext(), "" + error.toString(), Toast.LENGTH_SHORT).show();
 
     }
+
+
 }

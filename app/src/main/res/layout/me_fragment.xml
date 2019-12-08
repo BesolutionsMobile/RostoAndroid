@@ -153,6 +153,7 @@
             android:backgroundTint="@color/colorLighterGray"/>
 
         <LinearLayout
+            android:id="@+id/linearFaq"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_30sdp"
             android:orientation="horizontal"
@@ -255,6 +256,7 @@
             android:background="@color/colorLighterGray"
             android:gravity="center_horizontal|center"
             android:paddingRight="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_8ssp"
             android:fontFamily="@font/thesansbold"/>
 
 

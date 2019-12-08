@@ -190,10 +190,10 @@ public class Apicalls
 
 
 
-    public void selectByDepartment (final String Department)
+    public void faq_question ()
     {
 
-        apiRouter.performRequest(Apiclient.Select_By_department.getURL(),Apiclient.Select_By_department.getParams(), Collections.singletonList(Department),Request.Method.POST,Apiclient.Select_By_department.getCode());
+        apiRouter.performRequest(Apiclient.FAQ_QUESTION.getURL(),Apiclient.FAQ_QUESTION.getParams(), null,Request.Method.POST,Apiclient.FAQ_QUESTION.getCode());
 
     }
 

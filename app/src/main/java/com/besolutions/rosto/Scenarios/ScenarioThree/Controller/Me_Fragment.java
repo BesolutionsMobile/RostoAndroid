@@ -6,14 +6,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.besolutions.rosto.R;
+import com.besolutions.rosto.Scenarios.ScenarioFour.Controller.Order_Information;
 import com.besolutions.rosto.Scenarios.ScenarioOne.Pattrens.IFOnBackPressed;
+import com.besolutions.rosto.Scenarios.ScenarioThree.Model.Question;
 import com.besolutions.rosto.Scenarios.ScenarioTwo.Controller.SignIn;
 import com.besolutions.rosto.local_data.send_data;
 
@@ -22,6 +27,7 @@ public class Me_Fragment extends Fragment implements IFOnBackPressed {
     private View view;
     TextView txtprofile,txtpass;
     Button btnlogout;
+    LinearLayout linearfaq;
 
 
 
@@ -32,10 +38,11 @@ public class Me_Fragment extends Fragment implements IFOnBackPressed {
     {
         view = inflater.inflate(R.layout.me_fragment, container, false);
 
+
         txtpass = view.findViewById(R.id.txt_EditPass);
         txtprofile = view.findViewById(R.id.txt_EditProfile);
         btnlogout = view.findViewById(R.id.btnLogOut);
-
+        linearfaq = view.findViewById(R.id.linearFaq);
         btnlogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -44,6 +51,7 @@ public class Me_Fragment extends Fragment implements IFOnBackPressed {
                 send_data.userId_check(getContext(),false);
 
                 startActivity(new Intent(getContext(), SignIn.class));
+                getActivity().finish();
             }
         });
 
@@ -63,6 +71,18 @@ public class Me_Fragment extends Fragment implements IFOnBackPressed {
             public void onClick(View v) {
 
                 startActivity(new Intent(getContext(),Change_Pass.class));
+            }
+        });
+
+        linearfaq.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                FragmentTransaction fr = getActivity().getSupportFragmentManager().beginTransaction();
+                fr.replace(R.id.fragment_container,new FAQ());
+                fr.addToBackStack(null);
+                fr.commit();
+
             }
         });
 

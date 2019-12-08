@@ -29,7 +29,7 @@
             android:textDirection="rtl"
             android:layout_marginLeft="@dimen/_33sdp"
             android:hint="الاسم"
-            android:imeOptions="actionDone"
+            android:imeOptions="actionNext"
             android:singleLine="true"
             android:inputType="text"
             android:textAlignment="viewEnd"
@@ -37,6 +37,8 @@
             android:textColor="@color/colorw"
             android:fontFamily="@font/segoeui"
             android:backgroundTint="@color/colorw"
+            android:paddingLeft="@dimen/_5ssp"
+            android:paddingRight="@dimen/_7sdp"
             android:textSize="17dp"/>
 
         <EditText
@@ -47,10 +49,12 @@
             android:textDirection="rtl"
             android:layout_marginRight="@dimen/_33sdp"
             android:layout_marginLeft="@dimen/_33sdp"
+            android:paddingLeft="@dimen/_5ssp"
+            android:paddingRight="@dimen/_7sdp"
             android:hint="كلمة المرور"
             android:singleLine="true"
             android:inputType="textPassword"
-            android:imeOptions="actionDone"
+            android:imeOptions="actionGo"
             android:textColorHint="@color/colorw"
             android:textColor="@color/colorw"
             android:fontFamily="@font/segoeui"

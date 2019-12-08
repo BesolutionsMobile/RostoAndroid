@@ -47,17 +47,13 @@ public class Product_Details extends Fragment implements NetworkInterface {
     String size;
     String size_id;
     int num = 1;
+    int totalPrice1;
     private View view;
-
-
-
-
 
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
-    {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.activity_product_details, container, false);
 
         realm = Realm.getDefaultInstance();
@@ -65,7 +61,7 @@ public class Product_Details extends Fragment implements NetworkInterface {
 
         txtname = view.findViewById(R.id.txtProductDetailsName);
         txtdecrese = view.findViewById(R.id.txtProductDetailsDecrease);
-        txtdescription =view.findViewById(R.id.txtProductDetailsDescription);
+        txtdescription = view.findViewById(R.id.txtProductDetailsDescription);
         txtincrease = view.findViewById(R.id.txtProductDetailsIncrease);
         txtnumber = view.findViewById(R.id.txtProductDetailsNumber);
         txtprice = view.findViewById(R.id.txtProductDetailsPrice);
@@ -78,7 +74,7 @@ public class Product_Details extends Fragment implements NetworkInterface {
         final saved_data saved_data = new saved_data();
         String product_id = saved_data.get_product_id(getContext());
 
-        new Apicalls(getContext(),Product_Details.this).get_product_details(product_id);
+        new Apicalls(getContext(), Product_Details.this).get_product_details(product_id);
 
         btnaddtocart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -123,13 +119,10 @@ public class Product_Details extends Fragment implements NetworkInterface {
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState)
-    {
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
     }
-
-
 
 
     @Override
@@ -142,7 +135,7 @@ public class Product_Details extends Fragment implements NetworkInterface {
 
         pg.setVisibility(View.GONE);
         Gson gson = new Gson();
-        Model_Product_Details  modelProductDetails = gson.fromJson(model.getResponse(),Model_Product_Details.class);
+        Model_Product_Details modelProductDetails = gson.fromJson(model.getResponse(), Model_Product_Details.class);
 
         price_details = modelProductDetails.getPrices();
         txtdescription.setText(modelProductDetails.getProduct().getDescription());
@@ -152,60 +145,15 @@ public class Product_Details extends Fragment implements NetworkInterface {
                 .placeholder(R.drawable.rostologo)
                 .into(imgdeatails);
 
-        txtprice.setText(price_details[0].getPrice());
-        final int toatalPrice = Integer.parseInt(txtprice.getText().toString());
-
-
-        txtincrease.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                num = Integer.parseInt(txtnumber.getText().toString());
-                num++;
-                if (num< 30)
-                {
-                    txtnumber.setText(""+num);
-                    txtprice.setText(""+num*toatalPrice);
-
-                }else if (num > 30)
-                {
-                    num = 30 ;
-                    txtnumber.setText(""+num);
-                    txtprice.setText(""+num*toatalPrice);
-
-                }
-
-
-            }
-        });
-
-        txtdecrese.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                num = Integer.parseInt(txtnumber.getText().toString());
-                num --;
-                if (num>=1)
-                {
-                    txtnumber.setText(""+num);
-                    txtprice.setText(""+num*toatalPrice);
-
-                }else if (num<=0)
-                {
-                    num = 1 ;
-                    txtnumber.setText(""+num);
-                    txtprice.setText(""+num*toatalPrice);
-                }
-            }
-        });
 
 
         ArrayList<String> adapterList = new ArrayList<String>();
-        for (int i =0; i<price_details.length; i++)
-        {
+        for (int i = 0; i < price_details.length; i++) {
 
             adapterList.add(price_details[i].getSize());
 
         }
-        ArrayAdapter<String> adapter = new ArrayAdapter<> (getContext(),android.R.layout.simple_spinner_item,adapterList);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, adapterList);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
 
@@ -213,18 +161,103 @@ public class Product_Details extends Fragment implements NetworkInterface {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-               txtprice.setText(price_details[position].getPrice());
-               size = price_details[position].getSize();
-               size_id = price_details[position].getIdSize();
+                int price = Integer.parseInt(price_details[position].getPrice());
+                int selectrd = num * price;
+
+                txtprice.setText(""+selectrd);
+                size = price_details[position].getSize();
+                size_id = price_details[position].getIdSize();
+                totalPrice1 = Integer.parseInt(price_details[position].getPrice());
+
+
+                txtincrease.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        num = Integer.parseInt(txtnumber.getText().toString());
+                        num++;
+                        if (num < 30) {
+                            txtnumber.setText("" + num);
+                            txtprice.setText("" + num * totalPrice1);
+
+                        } else if (num > 30) {
+                            num = 30;
+                            txtnumber.setText("" + num);
+                            txtprice.setText("" + num * totalPrice1);
+
+                        }
+
+
+                    }
+                });
+
+                txtdecrese.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        num = Integer.parseInt(txtnumber.getText().toString());
+                        num--;
+                        if (num >= 1) {
+                            txtnumber.setText("" + num);
+                            txtprice.setText("" + num * totalPrice1);
+
+                        } else if (num <= 0) {
+                            num = 1;
+                            txtnumber.setText("" + num);
+                            txtprice.setText("" + num * totalPrice1);
+                        }
+                    }
+                });
 
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
+                txtprice.setText(price_details[0].getPrice());
+                final int toatalPrice = Integer.parseInt(txtprice.getText().toString());
+
+
+                txtincrease.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        num = Integer.parseInt(txtnumber.getText().toString());
+                        num++;
+                        if (num < 30) {
+                            txtnumber.setText("" + num);
+                            txtprice.setText("" + num * toatalPrice);
+
+                        } else if (num > 30) {
+                            num = 30;
+                            txtnumber.setText("" + num);
+                            txtprice.setText("" + num * toatalPrice);
+
+                        }
+
+
+                    }
+                });
+
+                txtdecrese.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        num = Integer.parseInt(txtnumber.getText().toString());
+                        num--;
+                        if (num >= 1) {
+                            txtnumber.setText("" + num);
+                            txtprice.setText("" + num * toatalPrice);
+
+                        } else if (num <= 0) {
+                            num = 1;
+                            txtnumber.setText("" + num);
+                            txtprice.setText("" + num * toatalPrice);
+                        }
+                    }
+                });
+
 
             }
         });
+
+
 
     }
 
@@ -232,7 +265,7 @@ public class Product_Details extends Fragment implements NetworkInterface {
     public void OnError(VolleyError error) {
 
         pg.setVisibility(View.GONE);
-        Toast.makeText(getContext(), ""+error.toString(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), "" + error.toString(), Toast.LENGTH_SHORT).show();
 
     }
 }

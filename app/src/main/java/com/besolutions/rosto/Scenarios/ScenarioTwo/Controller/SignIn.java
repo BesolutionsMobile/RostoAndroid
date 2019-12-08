@@ -25,10 +25,14 @@ import com.besolutions.rosto.R;
 import com.besolutions.rosto.Scenarios.ScenarioOne.Controller.MainActivity;
 import com.besolutions.rosto.Scenarios.ScenarioTwo.Model.UserFinalResponse;
 import com.besolutions.rosto.local_data.send_data;
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
 import com.google.gson.Gson;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import es.dmoral.toasty.Toasty;
 
 public class SignIn extends AppCompatActivity  implements NetworkInterface {
 
@@ -49,14 +53,41 @@ public class SignIn extends AppCompatActivity  implements NetworkInterface {
         btnsignin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(editmail.getText().toString().equals(""))
+                {
+                    editmail.setError("من فضلك ادخل البريد الاكتروني!");
 
+                    YoYo.with(Techniques.Flash)
+                            .duration(800)
+                            .repeat(1)
+                            .playOn(findViewById(R.id.edit_Email));
 
-                new Apicalls(SignIn.this,SignIn.this).loginUser(editmail.getText().toString(),editpass.getText().toString());
-                pd.show();
+                    Toasty.error(SignIn.this, "من فضلك ادخل البريد الاكتروني!", Toast.LENGTH_SHORT).show();
+
+                }
+                else if(editpass.getText().toString().equals(""))
+                {
+                    editpass.setError("من فضلك ادخل الرقم السري!");
+                    YoYo.with(Techniques.Flash)
+                            .duration(800)
+                            .repeat(1)
+                            .playOn(findViewById(R.id.edit_pass));
+
+                    Toasty.error(SignIn.this, "من فضلك ادخل الرقم السري!", Toast.LENGTH_SHORT).show();
+
+                }
+                else {
+
+                    pd = new ProgressDialog(SignIn.this);
+                    pd.setMessage("جاري التحميل....");
+                    pd.show();
+                    new Apicalls(SignIn.this, SignIn.this).loginUser(editmail.getText().toString(), editpass.getText().toString());
+
+                }
             }
         });
 
-        pd = new ProgressDialog(SignIn.this);
+
 
 
         txtRegist.setOnClickListener(new View.OnClickListener() {
@@ -75,7 +106,7 @@ public class SignIn extends AppCompatActivity  implements NetworkInterface {
     @Override
     public void OnStart() {
 
-        pd.setMessage("Loading...");
+
     }
 
     @Override
@@ -93,19 +124,38 @@ public class SignIn extends AppCompatActivity  implements NetworkInterface {
         if (user.getStatus()== 1)
         {
             startActivity(new Intent(SignIn.this, MainActivity.class));
-            Toast.makeText(this, ""+user.getMessage(), Toast.LENGTH_SHORT).show();
+
+            //Toast.makeText(this, "تم تسجيل دخولك بنجاح ", Toast.LENGTH_SHORT).show();
+            Toasty.success(this, "تم تسجيل دخولك بنجاح.", Toast.LENGTH_SHORT, true).show();
 
             send_data.SET_USER_NAME(this,user.getUserData().getName());
             send_data.SET_USER_EMAIL(this,user.getUserData().getMail());
             send_data.SET_USER_PHONE(this,user.getUserData().getPhone());
             send_data.SET_USER_ID(this,user.getUserData().getId());
+            finish();
 
         }else if (user.getStatus() == 2)
         {
-            Toast.makeText(this, ""+user.getMessage(), Toast.LENGTH_SHORT).show();
+
+            YoYo.with(Techniques.Flash)
+                    .duration(800)
+                    .repeat(1)
+                    .playOn(findViewById(R.id.edit_Email));
+
+            YoYo.with(Techniques.Flash)
+                    .duration(800)
+                    .repeat(1)
+                    .playOn(findViewById(R.id.edit_pass));
+
+            editmail.setError("من فضلك راجع البريد الاكتروني الخاصة بك");
+
+            editpass.setError("من فضلك راجع كلمة المرور الخاصة بك");
+
+            Toasty.error(this, "خطا في الاسم او كلمة المرور !! ", Toast.LENGTH_SHORT).show();
+
         }else
         {
-            Toast.makeText(this, ""+user.getMessage(), Toast.LENGTH_SHORT).show();
+            Toasty.error(this, ""+user.getMessage(), Toast.LENGTH_SHORT).show();
         }
 
 
@@ -115,7 +165,8 @@ public class SignIn extends AppCompatActivity  implements NetworkInterface {
     @Override
     public void OnError(VolleyError error) {
 
-        Toast.makeText(this, "error "+error.toString(), Toast.LENGTH_SHORT).show();
+
+        Toasty.error(this, ""+error, Toast.LENGTH_SHORT).show();
         pd.cancel();
 
 

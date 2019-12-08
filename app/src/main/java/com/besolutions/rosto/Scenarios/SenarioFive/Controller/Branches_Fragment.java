@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -30,6 +31,7 @@ import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.List;
 
+import es.dmoral.toasty.Toasty;
 import io.realm.Realm;
 
 public class Branches_Fragment extends Fragment implements NetworkInterface, IFOnBackPressed {
@@ -132,6 +134,10 @@ public class Branches_Fragment extends Fragment implements NetworkInterface, IFO
     public void OnError(VolleyError error) {
 
         pgb.setVisibility(View.GONE);
+
+        Toasty.error(getContext(), "" + error.toString(), Toast.LENGTH_SHORT).show();
+
+
     }
 
     private void check_cart()
