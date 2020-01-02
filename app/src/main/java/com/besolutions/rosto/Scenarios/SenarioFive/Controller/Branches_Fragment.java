@@ -1,6 +1,10 @@
 package com.besolutions.rosto.Scenarios.SenarioFive.Controller;
 
+import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +20,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.VolleyError;
+import com.besolutions.rosto.MyProgressDialog;
 import com.besolutions.rosto.NetworkLayar.Apicalls;
 import com.besolutions.rosto.NetworkLayar.NetworkInterface;
 import com.besolutions.rosto.NetworkLayar.ResponseModel;
@@ -57,6 +62,8 @@ public class Branches_Fragment extends Fragment implements NetworkInterface, IFO
         branchesList.clear();
         check_cart();
         recyclerView = view.findViewById(R.id.recBranches);
+
+
 
         pgb= view.findViewById(R.id.pg);
 
@@ -135,8 +142,15 @@ public class Branches_Fragment extends Fragment implements NetworkInterface, IFO
 
         pgb.setVisibility(View.GONE);
 
-        Toasty.error(getContext(), "" + error.toString(), Toast.LENGTH_SHORT).show();
+        ConnectivityManager connectivityManager = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.DISCONNECTED ||
+                connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.DISCONNECTED) {
+            //we are connected to a network
+            Toast.makeText(getContext(), "Please Check Your Internet Connection", Toast.LENGTH_SHORT).show();
+        } else {
 
+            Toast.makeText(getContext(), "" + error.toString(), Toast.LENGTH_SHORT).show();
+        }
 
     }
 

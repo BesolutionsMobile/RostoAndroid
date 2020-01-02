@@ -1,6 +1,7 @@
 package com.besolutions.rosto.Scenarios.ScenarioOne.Controller;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,33 +15,31 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class SplashActivity extends AppCompatActivity {
-    TinyDB tinyDB ;
+    TinyDB tinyDB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
         setContentView(R.layout.activity_splash);
 
         tinyDB = new TinyDB(this);
 
 
-        TimerTask timerTask = new TimerTask()
-        {
+        TimerTask timerTask = new TimerTask() {
             @Override
-            public void run()
-            {
+            public void run() {
                 saved_data saved_data = new saved_data();
+                if (saved_data.get_user_check(SplashActivity.this) == false) {
 
+                    startActivity(new Intent(getApplicationContext(), SignIn.class));
+                    finish();
 
-                if (saved_data.get_user_check(SplashActivity.this)==false) {
-
-                startActivity(new Intent(getApplicationContext(), SignIn.class));
-
-            }
+                }
                 if (saved_data.get_user_check(SplashActivity.this) == true) {
 
                     startActivity(new Intent(getApplicationContext(), MainActivity.class));
-
+                    finish();
                 }
             }
         };
@@ -60,7 +59,7 @@ public class SplashActivity extends AppCompatActivity {
                 saved_data saved_data = new saved_data();
 
 
-                if (saved_data.get_user_check(SplashActivity.this)==false) {
+                if (saved_data.get_user_check(SplashActivity.this) == false) {
 
                     startActivity(new Intent(getApplicationContext(), SignIn.class));
                     finish();

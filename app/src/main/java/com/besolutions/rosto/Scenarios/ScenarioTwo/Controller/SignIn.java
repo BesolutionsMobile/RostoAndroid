@@ -41,14 +41,14 @@ public class SignIn extends AppCompatActivity  implements NetworkInterface {
     Button btnsignin;
     ProgressDialog pd;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
 
         txtRegist = findViewById(R.id.txtRegister);
         editmail = findViewById(R.id.edit_Email);
         editpass = findViewById(R.id.edit_pass);
-        btnsignin = findViewById(R.id.btn_SignIn);
+        btnsignin = (Button) findViewById(R.id.btn_SignIn);
 
         btnsignin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -123,16 +123,18 @@ public class SignIn extends AppCompatActivity  implements NetworkInterface {
 
         if (user.getStatus()== 1)
         {
-            startActivity(new Intent(SignIn.this, MainActivity.class));
+            //startActivity(new Intent(SignIn.this, MainActivity.class));
 
-            //Toast.makeText(this, "تم تسجيل دخولك بنجاح ", Toast.LENGTH_SHORT).show();
-            Toasty.success(this, "تم تسجيل دخولك بنجاح.", Toast.LENGTH_SHORT, true).show();
 
             send_data.SET_USER_NAME(this,user.getUserData().getName());
             send_data.SET_USER_EMAIL(this,user.getUserData().getMail());
             send_data.SET_USER_PHONE(this,user.getUserData().getPhone());
             send_data.SET_USER_ID(this,user.getUserData().getId());
-            finish();
+            //GO TO MAIN
+            loading loading=new loading();
+            loading.dialog(SignIn.this,R.layout.loading,.80);
+
+            pd.cancel();
 
         }else if (user.getStatus() == 2)
         {

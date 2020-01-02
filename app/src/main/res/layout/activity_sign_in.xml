@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".Scenarios.ScenarioTwo.Controller.SignIn"
-    android:background="@drawable/itembranch">
+    android:background="@drawable/splash">
 
     <LinearLayout
         android:layout_width="match_parent"

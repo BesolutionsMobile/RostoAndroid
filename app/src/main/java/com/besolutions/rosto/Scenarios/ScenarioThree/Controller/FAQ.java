@@ -6,6 +6,9 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -27,6 +30,7 @@ import com.besolutions.rosto.Scenarios.ScenarioSeven.Pattrens.RcyProductAdapter;
 import com.besolutions.rosto.Scenarios.ScenarioSex.Model.Catrgory;
 import com.besolutions.rosto.Scenarios.ScenarioThree.Model.Model_FAQ;
 import com.besolutions.rosto.Scenarios.ScenarioThree.Model.Question;
+import com.besolutions.rosto.Scenarios.ScenarioThree.Pattrens.SimpleAdapter;
 import com.google.gson.Gson;
 
 import net.cachapa.expandablelayout.ExpandableLayout;
@@ -108,99 +112,17 @@ public class FAQ extends Fragment implements NetworkInterface {
 
     @Override
     public void OnError(VolleyError error) {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.DISCONNECTED ||
+                connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.DISCONNECTED) {
+            //we are connected to a network
+            Toast.makeText(getContext(), "Please Check Your Internet Connection", Toast.LENGTH_SHORT).show();
+        } else {
+
+            Toast.makeText(getContext(), "" + error.toString(), Toast.LENGTH_SHORT).show();
+        }
 
     }
 
 
-    private static class SimpleAdapter extends RecyclerView.Adapter<SimpleAdapter.ViewHolder> {
-        private static final int UNSELECTED = -1;
-
-        private RecyclerView recyclerView;
-        private int selectedItem = UNSELECTED;
-        List<Question> mMainList;
-
-        public SimpleAdapter(RecyclerView recyclerView, List<Question> faqList) {
-            this.recyclerView = recyclerView;
-            this.mMainList = faqList;
-        }
-
-        @Override
-        public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            View itemView = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.faq_item, parent, false);
-            return new ViewHolder(itemView);
-        }
-
-        @Override
-        public void onBindViewHolder(ViewHolder holder, int position) {
-            holder.bind();
-        }
-
-        @Override
-        public int getItemCount() {
-            return mMainList.size();
-        }
-
-        public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, ExpandableLayout.OnExpansionUpdateListener {
-            private ExpandableLayout expandableLayout;
-            private TextView expandButton, txtdiscription;
-            ImageView imgarrow;
-
-            public ViewHolder(View itemView) {
-                super(itemView);
-
-                expandableLayout = itemView.findViewById(R.id.expandable_layout);
-                expandableLayout.setInterpolator(new OvershootInterpolator());
-                expandableLayout.setOnExpansionUpdateListener(this);
-                expandButton = itemView.findViewById(R.id.expand_button);
-                txtdiscription = itemView.findViewById(R.id.txtDescription);
-                expandButton.setOnClickListener(this);
-                imgarrow = itemView.findViewById(R.id.imgArrow);
-
-            }
-
-            public void bind() {
-                int position = getAdapterPosition();
-                boolean isSelected = position == selectedItem;
-                final Question questions = mMainList.get(position);
-
-                expandButton.setText(questions.getTitle());
-                txtdiscription.setText(questions.getDescription());
-                expandButton.setSelected(isSelected);
-                expandableLayout.setExpanded(isSelected, false);
-            }
-
-            @Override
-            public void onClick(View view) {
-                ViewHolder holder = (ViewHolder) recyclerView.findViewHolderForAdapterPosition(selectedItem);
-                if (holder != null) {
-                    holder.expandButton.setSelected(false);
-                    holder.expandableLayout.collapse();
-
-                }
-
-                int position = getAdapterPosition();
-                if (position == selectedItem) {
-                    selectedItem = UNSELECTED;
-                } else {
-                    expandButton.setSelected(true);
-                    expandableLayout.toggle();
-                    selectedItem = position;
-                }
-            }
-
-            @Override
-            public void onExpansionUpdate(float expansionFraction, int state) {
-                Log.d("ExpandableLayout", "State: " + state);
-                if (state == ExpandableLayout.State.EXPANDING) {
-                    recyclerView.smoothScrollToPosition(getAdapterPosition());
-                    imgarrow.setRotation(expansionFraction * 180);
-                }else
-                {
-                    imgarrow.setRotation(expansionFraction * 180);
-
-                }
-            }
-        }
-    }
 }

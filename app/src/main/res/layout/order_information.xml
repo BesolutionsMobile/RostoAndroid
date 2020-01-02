@@ -128,7 +128,7 @@
                     android:fontFamily="@font/thesansbold"
                     android:gravity="right|center"
                     android:hint="ملاحظات"
-                    android:imeOptions="actionDone"
+                    android:imeOptions="actionGo"
                     android:paddingRight="@dimen/_10sdp"
                     android:singleLine="false"
                     android:maxLines="8"

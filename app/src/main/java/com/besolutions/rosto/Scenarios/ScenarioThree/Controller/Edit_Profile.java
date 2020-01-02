@@ -32,6 +32,7 @@ public class Edit_Profile extends AppCompatActivity implements NetworkInterface 
     ProgressBar pg;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -38,15 +38,14 @@ public class Orders_Fragment extends Fragment implements IFOnBackPressed {
     RecyclerView recyclerView;
     ArrayList<Cart_Model> cartModels = new ArrayList<>();
     TextView total_price;
-    Button btncontinueorder,btnaddorder;
-    static int delet_Price ;
-    static int total=0;
+    Button btncontinueorder, btnaddorder;
+    static int delet_Price;
+    static int total = 0;
 
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
-    {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.ordes_fragment, container, false);
 
         Realm.init(getContext());
@@ -56,8 +55,8 @@ public class Orders_Fragment extends Fragment implements IFOnBackPressed {
         total_price = view.findViewById(R.id.txtCartTotalPrice);
         btncontinueorder = view.findViewById(R.id.btnCartContinueOrder);
         btnaddorder = view.findViewById(R.id.btnCartAddOrder);
-        total_price.setText(""+count_price());
 
+        count_price();
         btnaddorder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -75,7 +74,7 @@ public class Orders_Fragment extends Fragment implements IFOnBackPressed {
             public void onClick(View v) {
 
                 FragmentTransaction fr = getActivity().getSupportFragmentManager().beginTransaction();
-                fr.replace(R.id.fragment_container,new Order_Information());
+                fr.replace(R.id.fragment_container, new Order_Information());
                 fr.addToBackStack(null);
                 fr.commit();
 
@@ -84,12 +83,10 @@ public class Orders_Fragment extends Fragment implements IFOnBackPressed {
 
         cartModels = adapter.retrieve();
 
-        recyclerView =view.findViewById(R.id.recCart);
+        recyclerView = view.findViewById(R.id.recCart);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        RcyCartAdapter adabter = new RcyCartAdapter(cartModels,getContext());
+        RcyCartAdapter adabter = new RcyCartAdapter(cartModels, getContext());
         recyclerView.setAdapter(adabter);
-
-
 
 
         return view;
@@ -97,7 +94,7 @@ public class Orders_Fragment extends Fragment implements IFOnBackPressed {
 
     @Override
     public void onStart() {
-        getActivity().registerReceiver(mReceiverLocation,new IntentFilter("delete_action"));
+        getActivity().registerReceiver(mReceiverLocation, new IntentFilter("delete_action"));
 
         super.onStart();
     }
@@ -109,33 +106,29 @@ public class Orders_Fragment extends Fragment implements IFOnBackPressed {
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState)
-    {
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
     }
 
-    private int count_price()
-    {
+    private int count_price() {
         int one_price = 0;
         Realm_adapter realmAdapter = new Realm_adapter(realm);
         cartModels = realmAdapter.retrieve();
 
         //SET VIEW GONE
-        if (cartModels.size()==0)
-        {
-           LinearLayout linearLayout = view.findViewById(R.id.linearRecyclerView);
-           linearLayout.setVisibility(View.GONE);
+        if (cartModels.size() == 0) {
+            LinearLayout linearLayout = view.findViewById(R.id.linearRecyclerView);
+            linearLayout.setVisibility(View.GONE);
 
-           Button btncontinueorder = view.findViewById(R.id.btnCartContinueOrder);
-           btncontinueorder.setVisibility(View.GONE);
+            Button btncontinueorder = view.findViewById(R.id.btnCartContinueOrder);
+            btncontinueorder.setVisibility(View.GONE);
 
-           Orders_Fragment orders_fragment = new Orders_Fragment();
+            Orders_Fragment orders_fragment = new Orders_Fragment();
 
 
         }
-        for (int i=0; i<realmAdapter.retrieve().size(); i++)
-        {
+        for (int i = 0; i < realmAdapter.retrieve().size(); i++) {
             int price = Integer.parseInt(cartModels.get(i).getTxtprice().toString());
             one_price += price;
         }
@@ -146,18 +139,19 @@ public class Orders_Fragment extends Fragment implements IFOnBackPressed {
         fragmentTransaction.attach(orders_fragment);
         fragmentTransaction.commit();
         */
-
+        total_price.setText("" + one_price);
 
         return one_price;
     }
+
     private BroadcastReceiver mReceiverLocation = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
             try {
                 //String deletedPrice = String.valueOf(intent.getSerializableExtra("category"));
-               // int deletes_price=count_price()-Integer.parseInt(deletedPrice);
+                // int deletes_price=count_price()-Integer.parseInt(deletedPrice);
 
-                total_price.setText(""+count_price());
+                total_price.setText("" + count_price());
 
             } catch (Exception e) {
                 e.printStackTrace();
