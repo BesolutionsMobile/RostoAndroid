@@ -80,7 +80,7 @@ public class Home extends Fragment implements NetworkInterface, IFOnBackPressed 
 
         txtname.setText(tinyDB.getString("name"));
         txtname1.setText(tinyDB.getString("name"));
-        // txtphone.setText(tinyDB.getString("phone"));
+        txtphone.setText(tinyDB.getString("phone"));
 
         new Apicalls(getContext(),Home.this).get_all_shops_category();
         return view;
@@ -115,6 +115,7 @@ public class Home extends Fragment implements NetworkInterface, IFOnBackPressed 
             catrgory1.setName(catrgory[i].getName());
             catrgory1.setImage(catrgory[i].getImage());
             catrgory1.setId(catrgory[i].getId());
+            catrgory1.setProductcount(catrgory[i].getProductcount());
 
             catrgoryList.add(catrgory1);
         }
@@ -160,6 +161,7 @@ public class Home extends Fragment implements NetworkInterface, IFOnBackPressed 
             getActivity().startActivity(a);
             getActivity().finish();
         }
+
 
         return true;
     }

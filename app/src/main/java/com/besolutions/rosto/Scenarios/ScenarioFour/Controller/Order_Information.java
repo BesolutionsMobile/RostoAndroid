@@ -17,6 +17,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.android.volley.VolleyError;
 import com.besolutions.rosto.MyProgressDialog;
@@ -25,8 +26,12 @@ import com.besolutions.rosto.NetworkLayar.NetworkInterface;
 import com.besolutions.rosto.NetworkLayar.ResponseModel;
 import com.besolutions.rosto.R;
 import com.besolutions.rosto.Scenarios.ScenarioFour.Model.Model_Cart;
+import com.besolutions.rosto.Scenarios.ScenarioOne.Controller.MainActivity;
+import com.besolutions.rosto.Scenarios.ScenarioOne.Pattrens.IFOnBackPressed;
 import com.besolutions.rosto.Scenarios.ScenarioSeven.Model.Cart_Model;
+import com.besolutions.rosto.Scenarios.ScenarioSex.Controller.Home;
 import com.besolutions.rosto.Scenarios.ScenarioThree.Controller.Edit_Profile;
+import com.besolutions.rosto.Scenarios.SenarioFive.Model.Branch;
 import com.besolutions.rosto.Utils.Realm_adapter;
 import com.besolutions.rosto.local_data.saved_data;
 import com.daimajia.androidanimations.library.Techniques;
@@ -38,7 +43,7 @@ import java.util.ArrayList;
 import es.dmoral.toasty.Toasty;
 import io.realm.Realm;
 
-public class Order_Information extends Fragment implements NetworkInterface {
+public class Order_Information extends Fragment implements NetworkInterface , IFOnBackPressed {
 
 
     private View view;
@@ -247,5 +252,15 @@ public class Order_Information extends Fragment implements NetworkInterface {
 
             Toast.makeText(getContext(), "" + error.toString(), Toast.LENGTH_SHORT).show();
         }
+    }
+
+    @Override
+    public boolean onBackPressed() {
+        MainActivity.navigation.setSelectedItemId(R.id.branches);
+        FragmentTransaction fr = getActivity().getSupportFragmentManager().beginTransaction();
+        fr.replace(R.id.fragment_container, new Home());
+        fr.addToBackStack(null);
+        fr.commit();
+        return true;
     }
 }

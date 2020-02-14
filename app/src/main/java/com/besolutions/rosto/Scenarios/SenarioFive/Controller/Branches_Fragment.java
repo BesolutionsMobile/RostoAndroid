@@ -31,6 +31,7 @@ import com.besolutions.rosto.Scenarios.ScenarioSex.Controller.Home;
 import com.besolutions.rosto.Scenarios.SenarioFive.Model.Branch;
 import com.besolutions.rosto.Scenarios.SenarioFive.Model.Model_branches;
 import com.besolutions.rosto.Scenarios.SenarioFive.Pattrens.RcyMainAdapter;
+import com.besolutions.rosto.Utils.TinyDB;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
@@ -49,8 +50,10 @@ public class Branches_Fragment extends Fragment implements NetworkInterface, IFO
 
     Branches_Fragment branches_fragment;
     Realm realm;
+    TinyDB tinyDB;
 
     List<Branch> branchesList = new ArrayList<>();
+
 
     @Nullable
     @Override
@@ -124,6 +127,8 @@ public class Branches_Fragment extends Fragment implements NetworkInterface, IFO
             branch.setPhone(branches[i].getPhone());
             branch.setImage(branches[i].getImage());
             branch.setId(branches[i].getId());
+
+
 
 
 

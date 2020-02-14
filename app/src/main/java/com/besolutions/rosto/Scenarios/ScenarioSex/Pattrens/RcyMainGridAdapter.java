@@ -67,6 +67,7 @@ public class RcyMainGridAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
         mainHolder.textname.setText(catrgory.getName());
         mainHolder.textdescription.setText(catrgory.getDescription());
+        mainHolder.txtproductcount.setText(catrgory.getProductcount());
         Glide.with(mContext)
                 .load(catrgory.getImage())
                 .placeholder(R.drawable.rostologo)
@@ -95,7 +96,7 @@ public class RcyMainGridAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
     public class MainItemHolder extends RecyclerView.ViewHolder
     {
-        TextView textname,textdescription;
+        TextView textname,textdescription,txtproductcount;
         ImageView imageView;
         LinearLayout lineasuggest;
         OnItemListener onItemListener;
@@ -105,6 +106,7 @@ public class RcyMainGridAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             super(itemView);
             textname = itemView.findViewById(R.id.txtNameHome);
             textdescription = itemView.findViewById(R.id.txtDescriptionHome);
+            txtproductcount = itemView.findViewById(R.id.txtProductCount);
             imageView = itemView.findViewById(R.id.imgHome);
 
         }

@@ -1,16 +1,15 @@
 package com.besolutions.rosto;
-
-import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
 import android.view.Window;
-import android.view.WindowManager;
 
-import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.besolutions.rosto.Scenarios.ScenarioOne.Controller.MainActivity;
+import com.besolutions.rosto.Scenarios.ScenarioSex.Controller.Home;
 
 
 public class MyProgressDialog {
@@ -29,10 +28,10 @@ public class MyProgressDialog {
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             public void run() {
-                String price = "";
-                Intent in = new Intent("send_order_action");
-                in.putExtra("category", price);
-                dialog.getContext().sendBroadcast(in);
+                MainActivity.navigation.setSelectedItemId(R.id.branches);
+                FragmentTransaction fr = ((AppCompatActivity)context).getSupportFragmentManager().beginTransaction();
+                fr.replace(R.id.fragment_container, new Home());
+                fr.commit();
                 dialog.dismiss();
            }
         }, 5000);

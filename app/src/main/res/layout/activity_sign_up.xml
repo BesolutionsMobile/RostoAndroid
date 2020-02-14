@@ -6,15 +6,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/splash"
+    android:background="@drawable/splashscreen3"
     android:gravity="center_horizontal"
     tools:context=".Scenarios.ScenarioTwo.Controller.Sign_Up">
 
     <ImageView
-        android:layout_width="200dp"
-        android:layout_height="140dp"
-        android:src="@drawable/rostologo"
-        android:layout_marginTop="7dp"/>
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_120sdp"
+        android:layout_marginTop="@dimen/_40sdp"
+        android:scaleX=".6"
+        android:scaleY=".6"
+        android:src="@drawable/logo" />
 
 
 
@@ -22,7 +24,7 @@
         android:id="@+id/editName"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_35sdp"
-        android:layout_marginTop="@dimen/_34sdp"
+        android:layout_marginTop="@dimen/_20sdp"
         android:layout_marginRight="@dimen/_34sdp"
         android:layout_marginLeft="@dimen/_34sdp"
         android:textDirection="rtl"
@@ -31,12 +33,14 @@
         android:singleLine="true"
         android:inputType="text"
         android:textColorHint="@color/colorw"
+        android:drawableRight="@drawable/usericon"
+        android:drawablePadding="@dimen/_5sdp"
+        android:drawableTint="@color/colorOrange"
         android:textColor="@color/colorw"
         android:paddingLeft="@dimen/_5ssp"
-        android:paddingRight="@dimen/_7sdp"
         android:textAlignment="textStart"
         android:fontFamily="@font/segoeui"
-        android:backgroundTint="@color/colorw"
+        android:backgroundTint="@color/colorOrange"
         android:textSize="@dimen/_14sdp"/>
 
     <EditText
@@ -55,9 +59,11 @@
         android:textColor="@color/colorw"
         android:fontFamily="@font/segoeui"
         android:paddingLeft="@dimen/_5ssp"
-        android:paddingRight="@dimen/_7sdp"
+        android:drawableTint="@color/colorOrange"
+        android:drawablePadding="@dimen/_5sdp"
+        android:drawableRight="@drawable/phonee"
         android:textAlignment="viewEnd"
-        android:backgroundTint="@color/colorw"
+        android:backgroundTint="@color/colorOrange"
         android:textSize="@dimen/_14sdp"/>
 
     <EditText
@@ -75,10 +81,12 @@
         android:textColorHint="@color/colorw"
         android:textColor="@color/colorw"
         android:paddingLeft="@dimen/_5ssp"
-        android:paddingRight="@dimen/_7sdp"
         android:fontFamily="@font/segoeui"
+        android:drawableRight="@drawable/mail"
+        android:drawablePadding="@dimen/_5sdp"
+        android:drawableTint="@color/colorOrange"
         android:textAlignment="textStart"
-        android:backgroundTint="@color/colorw"
+        android:backgroundTint="@color/colorOrange"
         android:textSize="@dimen/_14sdp"/>
 
     <EditText
@@ -97,9 +105,11 @@
         android:textColorHint="@color/colorw"
         android:textColor="@color/colorw"
         android:paddingLeft="@dimen/_5ssp"
-        android:paddingRight="@dimen/_7sdp"
         android:fontFamily="@font/segoeui"
-        android:backgroundTint="@color/colorw"
+        android:drawableTint="@color/colorOrange"
+        android:drawablePadding="@dimen/_5sdp"
+        android:drawableRight="@drawable/lockicon"
+        android:backgroundTint="@color/colorOrange"
         android:textSize="@dimen/_14sdp"/>
 
     <Button
@@ -112,8 +122,8 @@
         android:fontFamily="@font/thesansbold"
         android:background="@drawable/btnbg"
         android:backgroundTint="@color/colorw"
-        android:layout_marginRight="@dimen/_34sdp"
-        android:layout_marginLeft="@dimen/_34sdp"
+        android:layout_marginRight="@dimen/_50sdp"
+        android:layout_marginLeft="@dimen/_50sdp"
         android:layout_marginTop="@dimen/_17sdp"/>
 
 

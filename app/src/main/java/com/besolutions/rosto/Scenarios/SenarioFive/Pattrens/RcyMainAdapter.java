@@ -44,7 +44,7 @@ public class RcyMainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
     {
 
-        tinyDB = new TinyDB(mContext);
+
 
         View ads = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_branches,parent,false);
         MainItemHolder mainHolder = new MainItemHolder(ads) ;
@@ -64,7 +64,7 @@ public class RcyMainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
         int viewType = getItemViewType(position);
         final Branch branches  = mMainList.get(position);
-
+        tinyDB = new TinyDB(mContext);
 
         MainItemHolder mainHolder =(MainItemHolder) holder;
 
@@ -85,6 +85,8 @@ public class RcyMainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
                 send_data send_data = new send_data();
                 send_data.id_branches(mContext,mMainList.get(position).getId());
+                tinyDB.putString("name",mMainList.get(position).getName());
+                tinyDB.putString("phone", mMainList.get(position).getPhone());
                 //Toast.makeText(mContext, ""+mMainList.get(position).getId(), Toast.LENGTH_SHORT).show();
                 FragmentTransaction fr = ((AppCompatActivity)mContext).getSupportFragmentManager().beginTransaction();
                 fr.replace(R.id.fragment_container,new Home());

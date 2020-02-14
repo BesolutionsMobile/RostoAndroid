@@ -2,15 +2,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/_80sdp"
-    android:layout_margin="@dimen/_5sdp"
+    android:layout_height="@dimen/_75sdp"
+
     android:orientation="horizontal">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="@dimen/_5sdp"
-        app:cardCornerRadius="@dimen/_5sdp"
+        app:cardCornerRadius="@dimen/_8sdp"
         app:cardElevation="@dimen/_5sdp"
         app:cardPreventCornerOverlap="true">
 
@@ -18,16 +18,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        android:gravity="bottom"
+        android:gravity="center_vertical"
         android:weightSum="100">
 
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardAdMain"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="@dimen/_55sdp"
             android:layout_margin="@dimen/_5sdp"
-            android:layout_weight="25"
+            android:layout_weight="20"
             android:elevation="5dp"
             app:cardCornerRadius="5dp"
             app:cardElevation="@dimen/_5sdp"
@@ -45,8 +45,7 @@
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="90dp"
-            android:layout_marginTop="6dp"
+            android:layout_height="match_parent"
             android:layout_weight="75"
             android:orientation="vertical">
 
@@ -55,24 +54,26 @@
                 android:id="@+id/txtTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="@dimen/_8sdp"
                 android:fontFamily="@font/thesansbold"
                 android:maxLines="1"
                 android:paddingRight="10dp"
                 android:paddingLeft="@dimen/_10sdp"
                 android:text="شارع فيصل"
                 android:textColor="@color/colorb"
-                android:textSize="15dp" />
+                android:textSize="@dimen/_11sdp" />
 
             <TextView
                 android:id="@+id/txtAdress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 android:ellipsize="end"
                 android:fontFamily="@font/segoeui"
+                android:layout_marginTop="@dimen/_8sdp"
                 android:maxLines="1"
                 android:paddingRight="10dp"
+                android:paddingLeft="@dimen/_10sdp"
+                android:textSize="@dimen/_10sdp"
                 android:text="العشرين" />
 
             <TextView
@@ -84,6 +85,8 @@
                 android:gravity="right"
                 android:maxLines="1"
                 android:paddingRight="10dp"
+                android:paddingLeft="@dimen/_10sdp"
+                android:textSize="@dimen/_10sdp"
                 android:text="011112556611" />
 
 

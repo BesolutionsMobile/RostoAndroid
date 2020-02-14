@@ -17,9 +17,11 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.besolutions.rosto.R;
 import com.besolutions.rosto.Scenarios.ScenarioFour.Controller.Order_Information;
+import com.besolutions.rosto.Scenarios.ScenarioOne.Controller.MainActivity;
 import com.besolutions.rosto.Scenarios.ScenarioOne.Pattrens.IFOnBackPressed;
 import com.besolutions.rosto.Scenarios.ScenarioThree.Model.Question;
 import com.besolutions.rosto.Scenarios.ScenarioTwo.Controller.SignIn;
+import com.besolutions.rosto.Scenarios.SenarioFive.Controller.Branches_Fragment;
 import com.besolutions.rosto.local_data.send_data;
 
 public class Me_Fragment extends Fragment implements IFOnBackPressed {
@@ -99,11 +101,10 @@ public class Me_Fragment extends Fragment implements IFOnBackPressed {
 
     @Override
     public boolean onBackPressed() {
-        Intent a = new Intent(Intent.ACTION_MAIN);
-        a.addCategory(Intent.CATEGORY_HOME);
-        a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        getActivity().startActivity(a);
-        getActivity().finish();
+        MainActivity.navigation.setSelectedItemId(R.id.branches);
+        FragmentTransaction fr = getActivity().getSupportFragmentManager().beginTransaction();
+        fr.replace(R.id.fragment_container, new Branches_Fragment());
+        fr.commit();
         return true;
     }
 }

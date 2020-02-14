@@ -23,7 +23,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
     TinyDB tinyDB;
-    BottomNavigationView navigation;
+    public  static BottomNavigationView navigation;
     FragmentManager fragmentManager;
     FragmentTransaction fragmentTransaction;
     IntentFilter myFilter = new IntentFilter();

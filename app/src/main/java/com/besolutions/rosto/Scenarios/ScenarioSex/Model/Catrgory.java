@@ -18,7 +18,15 @@ public class Catrgory{
 	private String image;
 	@SerializedName("name")
 	private String name;
+	@SerializedName("prodyctCount")
+	private  String productcount;
 
+	public String getProductcount() {
+		return productcount;
+	}
+	public void setProductcount(String productcount) {
+		this.productcount = productcount;
+	}
 	public void setDescription(String description){
 		this.description = description;
 	}
@@ -59,6 +67,7 @@ public class Catrgory{
 		id = String.valueOf(jsonObject.opt("id"));
 		image = String.valueOf(jsonObject.opt("image"));
 		name = String.valueOf(jsonObject.opt("name"));
+		productcount = String.valueOf(jsonObject.opt("prodyctCount"));
 	}
 
 	/**
@@ -72,6 +81,7 @@ public class Catrgory{
 			jsonObject.put("id", id);
 			jsonObject.put("image", image);
 			jsonObject.put("name", name);
+			jsonObject.put("prodyctCount", productcount);
 			
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
