@@ -19,6 +19,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.android.volley.VolleyError;
+import com.besolutions.rosto.MyProgressDialog;
 import com.besolutions.rosto.NetworkLayar.Apicalls;
 import com.besolutions.rosto.NetworkLayar.NetworkInterface;
 import com.besolutions.rosto.NetworkLayar.ResponseModel;
@@ -101,10 +102,10 @@ public class Product extends Fragment implements NetworkInterface {
             }
         }else if (model_product.getStatus() == 3)
         {
+            MyProgressDialog myProgressDialog = new MyProgressDialog();
+            myProgressDialog.dialog(getContext(), R.layout.no_item_found, .90);
 
-            Toast.makeText(getContext(), " لا توجد بيانات..", Toast.LENGTH_SHORT).show();
-
-
+           // Toast.makeText(getContext(), " لا توجد بيانات..", Toast.LENGTH_SHORT).show();
         }else
         {
             Toast.makeText(getContext(), ""+model_product.getStatus() , Toast.LENGTH_SHORT).show();
