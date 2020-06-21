@@ -1,0 +1,116 @@
+package com.besolutions.rosto.Scenarios.ScenarioHome.Pattrens;
+
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.besolutions.rosto.R;
+import com.besolutions.rosto.Scenarios.ScenarioProduct.Controller.Product;
+import com.besolutions.rosto.Scenarios.ScenarioHome.Model.Catrgory;
+import com.besolutions.rosto.Utils.TinyDB;
+import com.bumptech.glide.Glide;
+
+import java.util.List;
+
+public class RcyMainGridAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
+{
+
+    TinyDB tinyDB;
+    List<Catrgory> mMainGridList;
+    Context mContext;
+
+
+    public RcyMainGridAdapter(List<Catrgory> songsList, Context context) {
+        this.mMainGridList = songsList;
+        this.mContext = context;
+
+    }
+
+    @NonNull
+    @Override
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
+    {
+        View ads = LayoutInflater.from(parent.getContext()).inflate(R.layout.home_item,parent,false);
+        MainItemHolder mainHolder = new MainItemHolder(ads) ;
+        return mainHolder;
+    }
+
+    public class MainHolder extends RecyclerView.ViewHolder{
+        public MainHolder(View itemview) {
+            super(itemview);
+        }
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, final int position) {
+
+        tinyDB = new TinyDB(mContext);
+        int viewType = getItemViewType(position);
+        final Catrgory catrgory  = mMainGridList.get(position);
+
+
+        MainItemHolder mainHolder =(MainItemHolder) holder;
+
+
+        mainHolder.textname.setText(catrgory.getName());
+        mainHolder.textdescription.setText(catrgory.getDescription());
+        mainHolder.txtproductcount.setText(catrgory.getProductcount());
+        Glide.with(mContext)
+                .load(catrgory.getImage())
+                .placeholder(R.drawable.rostologo)
+                .into(mainHolder.imageView);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                tinyDB.putString("id_home",mMainGridList.get(position).getId());
+                //mContext.startActivity(new Intent(mContext, Product.class).putExtra("id_home",mMainGridList.get(position).getId()));
+                FragmentTransaction fr = ((AppCompatActivity)mContext).getSupportFragmentManager().beginTransaction();
+                fr.replace(R.id.fragment_container,new Product());
+                fr.addToBackStack(null);
+                fr.commit();
+            }
+        });
+
+
+    }
+
+    @Override
+    public int getItemCount() {
+        return mMainGridList.size();
+    }
+
+
+    public class MainItemHolder extends RecyclerView.ViewHolder
+    {
+        TextView textname,textdescription,txtproductcount;
+        ImageView imageView;
+        LinearLayout lineasuggest;
+        OnItemListener onItemListener;
+
+        public MainItemHolder(@NonNull View itemView)
+        {
+            super(itemView);
+            textname = itemView.findViewById(R.id.txtNameHome);
+            textdescription = itemView.findViewById(R.id.txtDescriptionHome);
+            txtproductcount = itemView.findViewById(R.id.txtProductCount);
+            imageView = itemView.findViewById(R.id.imgHome);
+
+        }
+
+    }
+    public interface OnItemListener {
+        void onItemClick(int position);
+    }
+
+
+}

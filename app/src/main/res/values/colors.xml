@@ -13,6 +13,9 @@
     <color name="colorOrange3">#f9ca76</color>
     <color name="colorOrange1">#f05a22</color>
     <color name="colorTransparent">#00000000</color>
+    <color name="colorLightGray1">#CCCBCB</color>
+    <color name="colorDarkGray">#9C9C9C</color>
+    <color name="colorNavigation">#f3f3f3</color>
 
 
 

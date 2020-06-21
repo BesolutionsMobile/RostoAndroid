@@ -28,7 +28,8 @@ public enum Apiclient
     CHANGE_PASSWORD("user/update_password/549834453/25598", Arrays.asList("old_password","new_password","re_new_password","id_user"),9),
     SEND_ORDER("cart/sendOrder/549834453/25598", Arrays.asList("name","street","building","floor","flat","mobile","longitude","latitude","notes","id_user","id_branch","products"),10),
     FAQ_QUESTION("Question/View/549834453/25598", null,11),
-    Select_By_City("/select_haraj_by_search_city", Collections.singletonList("city"),12);
+    My_ORDERS("order/getAllOrdersByUserId/549834453/25598", null,12),
+    MY_ORDERS_DETAILS("order/view_order_details/549834453/25598", null,13);
 
 
 

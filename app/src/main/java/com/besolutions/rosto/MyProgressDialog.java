@@ -1,15 +1,14 @@
 package com.besolutions.rosto;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Handler;
 import android.view.Window;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.besolutions.rosto.Scenarios.ScenarioOne.Controller.MainActivity;
-import com.besolutions.rosto.Scenarios.ScenarioSex.Controller.Home;
+import com.besolutions.rosto.Scenarios.ScenarioMain.Controller.MainActivity;
+import com.besolutions.rosto.Scenarios.ScenarioHome.Controller.Home;
 
 
 public class MyProgressDialog {

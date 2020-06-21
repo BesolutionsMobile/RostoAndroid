@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Scenarios.ScenarioThree.Controller.FAQ">
+    tools:context=".Scenarios.ScenarioPersonalInfo.Controller.FAQ">
 
     <include layout="@layout/header_img"/>
     <androidx.recyclerview.widget.RecyclerView

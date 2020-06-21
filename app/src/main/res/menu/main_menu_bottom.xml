@@ -10,6 +10,12 @@
 
 
     <item
+        android:id="@+id/myorders"
+        android:title="طلباتي"
+        android:icon="@drawable/my_order"/>
+
+
+    <item
         android:id="@+id/orders"
         android:title="الطلبات"
         android:icon="@drawable/ic_cart"/>

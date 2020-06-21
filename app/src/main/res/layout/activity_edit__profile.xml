@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Scenarios.ScenarioThree.Controller.Edit_Profile">
+    tools:context=".Scenarios.ScenarioPersonalInfo.Controller.Edit_Profile">
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layoutDirection="rtl"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorNavigation"
+            android:orientation="vertical">
+
+            <include layout="@layout/header_img" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:gravity="start"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:includeFontPadding="true"
+                    android:fontFamily="@font/thesansbold"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="طلباتي"
+                    android:textColor="@color/colorb"
+                    android:textSize="@dimen/_14sdp"
+                    android:textStyle="bold"
+                    android:typeface="sans" />
+
+                <!--                <androidx.recyclerview.widget.RecyclerView-->
+                <!--                    android:id="@+id/rcyMyOrders"-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="match_parent"-->
+                <!--                    android:layout_marginEnd="@dimen/_15sdp"-->
+                <!--                    android:layout_marginTop="@dimen/_5ssp"-->
+                <!--                    android:layout_marginStart="@dimen/_15sdp"-->
+                <!--                    android:layout_marginBottom="@dimen/_10sdp"-->
+                <!--                    android:layoutDirection="rtl"-->
+                <!--                    tools:listitem="@layout/my_orders_items">-->
+
+                <!--                </androidx.recyclerview.widget.RecyclerView>-->
+
+            </LinearLayout>
+
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="@dimen/_120sdp"-->
+<!--                android:background="@color/colorNavigation"-->
+<!--                android:layoutDirection="rtl"-->
+<!--                android:orientation="vertical"-->
+<!--                android:weightSum="1">-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="@dimen/_120sdp"-->
+<!--                    android:layout_marginLeft="@dimen/_10sdp"-->
+<!--                    android:layout_marginTop="@dimen/_5sdp"-->
+<!--                    android:layout_marginRight="@dimen/_10sdp"-->
+<!--                    android:layout_marginBottom="@dimen/_5sdp"-->
+<!--                    android:layout_weight=".9"-->
+<!--                    android:layoutDirection="rtl"-->
+<!--                    android:orientation="vertical"-->
+<!--                    android:weightSum="3">-->
+
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="0dp"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:layoutDirection="rtl"-->
+<!--                        android:orientation="horizontal"-->
+<!--                        android:weightSum="1">-->
+
+
+<!--                        <ImageView-->
+<!--                            android:layout_width="0dp"-->
+<!--                            android:layout_height="match_parent"-->
+<!--                            android:layout_weight=".2"-->
+<!--                            android:src="@drawable/check" />-->
+
+<!--                        <RelativeLayout-->
+<!--                            android:layout_width="0dp"-->
+<!--                            android:layout_height="match_parent"-->
+<!--                            android:layout_weight=".8">-->
+
+<!--                            <TextView-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="match_parent"-->
+<!--                                android:fontFamily="@font/thesansbold"-->
+<!--                                android:gravity="center_vertical"-->
+<!--                                android:includeFontPadding="false"-->
+<!--                                android:paddingStart="@dimen/_10sdp"-->
+<!--                                android:paddingEnd="0dp"-->
+<!--                                android:text="تم ارسال الطلب بنجاح"-->
+<!--                                android:textColor="@color/colorb"-->
+<!--                                android:textSize="@dimen/_12sdp" />-->
+
+
+<!--                        </RelativeLayout>-->
+<!--                    </LinearLayout>-->
+
+
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="0dp"-->
+<!--                        android:layout_marginTop="@dimen/_5sdp"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:layoutDirection="rtl"-->
+<!--                        android:orientation="horizontal"-->
+<!--                        android:weightSum="1">-->
+
+<!--                        <RelativeLayout-->
+<!--                            android:layout_width="0dp"-->
+<!--                            android:layout_height="match_parent"-->
+<!--                            android:layout_weight=".2">-->
+
+<!--                            <ImageView-->
+<!--                                android:id="@+id/imgTruckGreen"-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="match_parent"-->
+<!--                                android:src="@drawable/truck_green" />-->
+
+<!--                            <ImageView-->
+<!--                                android:id="@+id/imgTruckGray"-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="match_parent"-->
+<!--                                android:src="@drawable/truck_gray" />-->
+
+
+<!--                        </RelativeLayout>-->
+
+<!--                        <RelativeLayout-->
+<!--                            android:layout_width="0dp"-->
+<!--                            android:layout_height="match_parent"-->
+<!--                            android:layout_weight=".8">-->
+
+<!--                            <TextView-->
+<!--                                android:id="@+id/txtTruckGreen"-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="match_parent"-->
+<!--                                android:fontFamily="@font/thesansbold"-->
+<!--                                android:gravity="center_vertical"-->
+<!--                                android:includeFontPadding="false"-->
+<!--                                android:paddingStart="@dimen/_10sdp"-->
+<!--                                android:paddingEnd="0dp"-->
+<!--                                android:text="تم شحن الطلب وفي الطريق اليك"-->
+<!--                                android:textColor="@color/colorb"-->
+<!--                                android:textSize="@dimen/_12sdp" />-->
+
+
+<!--                            <TextView-->
+<!--                                android:id="@+id/txtTruckGray"-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="match_parent"-->
+<!--                                android:fontFamily="@font/thesansbold"-->
+<!--                                android:gravity="center_vertical"-->
+<!--                                android:includeFontPadding="false"-->
+<!--                                android:paddingStart="@dimen/_10sdp"-->
+<!--                                android:paddingEnd="0dp"-->
+<!--                                android:text="تم شحن الطلب وفي الطريق اليك"-->
+<!--                                android:textColor="@color/colorDarkGray"-->
+<!--                                android:textSize="@dimen/_12sdp" />-->
+
+
+<!--                        </RelativeLayout>-->
+<!--                    </LinearLayout>-->
+
+
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="0dp"-->
+<!--                        android:layout_marginTop="@dimen/_5sdp"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:layoutDirection="rtl"-->
+<!--                        android:orientation="horizontal"-->
+<!--                        android:weightSum="1">-->
+
+
+<!--                        <RelativeLayout-->
+<!--                            android:layout_width="0dp"-->
+<!--                            android:layout_height="match_parent"-->
+<!--                            android:layout_weight=".2">-->
+
+<!--                            <ImageView-->
+<!--                                android:id="@+id/imgReceivedGreen"-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="match_parent"-->
+<!--                                android:src="@drawable/received_green" />-->
+
+
+<!--                            <ImageView-->
+<!--                                android:id="@+id/imgReceivedGray"-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="match_parent"-->
+<!--                                android:src="@drawable/received_gray" />-->
+
+
+<!--                        </RelativeLayout>-->
+
+<!--                        <RelativeLayout-->
+<!--                            android:layout_width="0dp"-->
+<!--                            android:layout_height="match_parent"-->
+<!--                            android:layout_weight=".8">-->
+
+<!--                            <TextView-->
+<!--                                android:id="@+id/txtReceivedGreen"-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="match_parent"-->
+<!--                                android:fontFamily="@font/thesansbold"-->
+<!--                                android:gravity="center_vertical"-->
+<!--                                android:includeFontPadding="false"-->
+<!--                                android:paddingStart="@dimen/_10sdp"-->
+<!--                                android:paddingEnd="0dp"-->
+<!--                                android:text="تم تسليم الطلب"-->
+<!--                                android:textColor="@color/colorb"-->
+<!--                                android:textSize="@dimen/_12sdp" />-->
+
+<!--                            <TextView-->
+<!--                                android:id="@+id/txtReceivedGray"-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="match_parent"-->
+<!--                                android:fontFamily="@font/thesansbold"-->
+<!--                                android:gravity="center_vertical"-->
+<!--                                android:includeFontPadding="false"-->
+<!--                                android:paddingStart="@dimen/_10sdp"-->
+<!--                                android:paddingEnd="0dp"-->
+<!--                                android:text="تم تسليم الطلب"-->
+<!--                                android:textColor="@color/colorDarkGray"-->
+<!--                                android:textSize="@dimen/_12sdp" />-->
+
+
+<!--                        </RelativeLayout>-->
+<!--                    </LinearLayout>-->
+
+
+<!--                </LinearLayout>-->
+
+<!--            </LinearLayout>-->
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:background="@color/colorw"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_2sdp"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:layoutDirection="rtl">
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rcyMyOrderDetails"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorNavigation"
+                    tools:listitem="@layout/my_order_details_item"/>
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_30sdp"
+                android:orientation="horizontal"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_2sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:background="@color/colorw"
+                android:weightSum="1">
+
+                <TextView
+                    android:id="@+id/txtTotal"
+                    android:layout_width="@dimen/_75sdp"
+                    android:layout_height="match_parent"
+                    android:textSize="@dimen/_12sdp"
+                    android:textColor="@color/colorOrange"
+                    android:text="0"
+                    android:paddingStart="@dimen/_7sdp"
+                    android:paddingEnd="0dp"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:gravity="center_vertical"
+                    android:fontFamily="@font/thesansbold"
+                    android:includeFontPadding="true"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textSize="@dimen/_12sdp"
+                    android:textColor="@color/colorOrange"
+                    android:text="الإجمالي"
+                    android:paddingStart="@dimen/_7sdp"
+                    android:paddingEnd="0dp"
+                    android:gravity="center_vertical"
+                    android:fontFamily="@font/thesansbold"
+                    android:includeFontPadding="true"/>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:indeterminateTint="@color/colorOrange"
+            android:visibility="gone"/>
+    </RelativeLayout>
+
+</LinearLayout>

@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Scenarios.ScenarioThree.Controller.Who_Are"
+    tools:context=".Scenarios.ScenarioPersonalInfo.Controller.Who_Are"
     android:orientation="vertical">
 
     <LinearLayout

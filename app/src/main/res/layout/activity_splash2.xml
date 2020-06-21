@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/colorLighterGray"
-    tools:context=".Scenarios.ScenarioOne.Controller.SplashActivity">
+    tools:context=".Scenarios.ScenarioMain.Controller.SplashActivity">
 
     <pl.droidsonroids.gif.GifImageView
         android:layout_width="match_parent"

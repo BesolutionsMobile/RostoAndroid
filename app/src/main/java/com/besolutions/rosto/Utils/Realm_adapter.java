@@ -1,9 +1,8 @@
 package com.besolutions.rosto.Utils;
 
-import com.besolutions.rosto.Scenarios.ScenarioSeven.Model.Cart_Model;
+import com.besolutions.rosto.Scenarios.ScenarioProduct.Model.Cart_Model;
 
 import java.util.ArrayList;
-import java.util.UUID;
 
 import io.realm.Realm;
 import io.realm.RealmResults;

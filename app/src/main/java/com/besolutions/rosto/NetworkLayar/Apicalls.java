@@ -200,12 +200,37 @@ public class Apicalls
     //----------------------------------------------------------------------------------------------
 
 
+    /**
+     *
+     * @func Main Activity Ads
+     *
+     */
 
 
-    public void select_By_City(final String City)
+    public void get_my_order (final String user_id )
     {
 
-        apiRouter.performRequest(Apiclient.Select_By_City.getURL(),Apiclient.Select_By_City.getParams(), Collections.singletonList(City),Request.Method.POST,Apiclient.Select_By_City.getCode());
+        apiRouter.performRequest(Apiclient.My_ORDERS.getURL()+"/"+user_id,Apiclient.My_ORDERS.getParams(),null,Request.Method.GET, Apiclient.My_ORDERS.getCode());
+
+    }
+
+    //----------------------------------------------------------------------------------------------
+
+
+    //----------------------------------------------------------------------------------------------
+
+
+    /**
+     *
+     * @func Main Activity Ads
+     *
+     */
+
+
+    public void get_my_order_details (final String order_id )
+    {
+
+        apiRouter.performRequest(Apiclient.MY_ORDERS_DETAILS.getURL()+"/"+order_id,Apiclient.MY_ORDERS_DETAILS.getParams(),null,Request.Method.GET, Apiclient.MY_ORDERS_DETAILS.getCode());
 
     }
 

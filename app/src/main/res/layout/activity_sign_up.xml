@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:background="@drawable/splashscreen3"
     android:gravity="center_horizontal"
-    tools:context=".Scenarios.ScenarioTwo.Controller.Sign_Up">
+    tools:context=".Scenarios.ScenarioAuthentication.Controller.Sign_Up">
 
     <ImageView
         android:layout_width="match_parent"

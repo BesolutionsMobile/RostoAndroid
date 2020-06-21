@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Scenarios.ScenarioSex.Controller.Home">
+    tools:context=".Scenarios.ScenarioHome.Controller.Home">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -88,7 +88,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/_10sdp"
-                    android:layout_marginRight="@dimen/_10sdp"></androidx.recyclerview.widget.RecyclerView>
+                    android:layout_marginRight="@dimen/_10sdp"
+                    tools:listitem="@layout/home_item">
+                </androidx.recyclerview.widget.RecyclerView>
 
             </LinearLayout>
 
