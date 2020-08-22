@@ -30,6 +30,7 @@ import com.besolutions.rosto.Scenarios.ScenarioMyOrders.Pattrens.Rcy_My_Orders_A
 import com.besolutions.rosto.Scenarios.ScenarioProduct.Model.Model_Product;
 import com.besolutions.rosto.Scenarios.ScenarioProduct.Model.Productes;
 import com.besolutions.rosto.Scenarios.SenarioBranches.Controller.Branches_Fragment;
+import com.besolutions.rosto.Utils.MyUtilFile;
 import com.besolutions.rosto.local_data.saved_data;
 import com.google.gson.Gson;
 
@@ -60,6 +61,8 @@ public class My_Orders extends Fragment implements NetworkInterface, IFOnBackPre
         String user_id = saved_data.get_user_id(Objects.requireNonNull(getContext()));
 
         pg.setVisibility(View.VISIBLE);
+
+        new MyUtilFile(getContext()).showMessage(user_id);
 
         new Apicalls(getContext(), My_Orders.this).get_my_order(user_id);
 
